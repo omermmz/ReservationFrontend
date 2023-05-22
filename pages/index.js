@@ -24,7 +24,20 @@ function HomePage() {
             </div></Link>
 
 
-        <div className={Grr.denemediv} id="second"></div>
+        <div className={Grr.denemediv} id="second">
+            <div className={Grr.secondButton}>
+                <p className={Grr.secondPara}>Halısahalar</p>
+            </div>
+            <div className={Grr.secondButton}>
+                <p className={Grr.secondPara}>Halısaha Ekle</p>
+            </div>
+            <div className={Grr.secondButton}>
+                <p className={Grr.secondPara}>Rezervasyon Yap</p>
+            </div>
+            <div className={Grr.secondButton}>
+                <p className={Grr.secondPara}>Şeçimine Göre Boş Saha Bul</p>
+            </div>
+        </div>
 
     </div>
 }

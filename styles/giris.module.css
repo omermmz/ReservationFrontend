@@ -1,5 +1,4 @@
 .body{
-    scroll-behavior: smooth;
     position: absolute;
     align-items: flex-start;
     left: 0px;
@@ -9,7 +8,6 @@
     width: 100%;
 }
 .navpage{
-    scroll-behavior: smooth;
     display: flex;
     flex-direction: row;
     background-color: burlywood;
@@ -18,7 +16,6 @@
 }
 
 .giris{
-    scroll-behavior: smooth;
     border-top: rgba(11,59,107) 5px solid;
     width: 100%;
     height: 650px;
@@ -27,42 +24,35 @@
 }
 
 .ingiris{
-    scroll-behavior: smooth;
     position: relative;
     width: 100%;
     height: content-box;
 }
  .ingiris2{
-     scroll-behavior: smooth;
     background-color: antiquewhite;
     position: relative;
     width: 50%;
     height: content-box;
 }
 .imageStyle{
-    scroll-behavior: smooth;
     background-repeat: no-repeat;
     height: 100%;
     width: 100%;
 }
 .giris:hover{
-    scroll-behavior: smooth;
     border-top:rgba(11,59,107,0.4) 5px solid ;
 }
 .giris:hover .imageStyle{
-    scroll-behavior: smooth;
     cursor: pointer;
     opacity: 0.4;
     color: black;
 
 }
 .giris:hover .parag{
-    scroll-behavior: smooth;
     color: coral;
 }
 
 .parag{
-    scroll-behavior: smooth;
     text-align: center;
     position: absolute;
     color: wheat;
@@ -73,7 +63,6 @@
 }
 
 .navparag{
-    scroll-behavior: smooth;
     font-family: "Arial Rounded MT Bold";
     color: crimson;
     font-weight: bolder;
@@ -86,12 +75,10 @@
 }
 
 .navparag:hover{
-    scroll-behavior: smooth;
     cursor: pointer;
 }
 
 .navButton{
-    scroll-behavior: smooth;
     font-family: 'FFDINWebLight', sans-serif  ;
     font-weight: bolder;
     display: flex;
@@ -106,7 +93,6 @@
 }
 
 .navB{
-    scroll-behavior: smooth;
     border: 1px crimson solid;
     border-radius: 99px;
     padding: 20px;
@@ -114,7 +100,6 @@
 }
 
 .navB2{
-    scroll-behavior: smooth;
     border: 1px crimson solid;
     border-radius: 99px;
     padding: 20px;
@@ -122,18 +107,43 @@
 }
 
 :where(.navB,.navB2):hover{
-    scroll-behavior: smooth;
     color: #0B3B6B;
     cursor: pointer;
     background-color: wheat;
     border: none;
 }
 
+.secondButton{
+    top: 10%;
+    position: relative;
+    border: 5px black solid;
+    border-radius: 30px;
+    padding: 20px;
+    height: 50px;
+    margin-right: 50px;
+    margin-left: 50px;
+    background-color: wheat;
+}
+
+.secondPara{
+    font-family: "Times New Roman", Times, serif;
+    font-weight: bolder;
+    font-size: 30px;
+    position: relative;
+    text-align: center;
+    bottom: 50%;
+}
+.secondButton:hover{
+    cursor: pointer;
+    background-color: green;
+    color: white;
+}
 .denemediv{
-    scroll-behavior: smooth;
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
     width: 100%;
-    height: 1500px;
-    background-color: deeppink;
+    height: 800px;
 }
 
 
@@ -159,7 +169,7 @@
 @media screen and (min-width: 1440px) {
     .giris{
         scroll-behavior: smooth;
-        height: 650px;
+        height: 710px;
     }
     .parag{
         scroll-behavior: smooth;
