@@ -5,8 +5,6 @@ import Link from "next/link";
 import Second from "../pages/girisSecond"
 import React from "react";
 function HomePage() {
-
-
     return  <div className={Grr.body}>
             <div className={Grr.navpage}>
                 <div className={Grr.navparag}>halisaham.com</div>

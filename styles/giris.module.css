@@ -148,9 +148,11 @@
 
 
 /* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
+
+
 @media screen and (min-width: 1280px)  {
     .giris{
-        height: 480px;
+        height: 410px;
         scroll-behavior: smooth;
     }
     .parag{
@@ -165,7 +167,7 @@
     }
 }
 
-
+/* TV EKRANI */
 @media screen and (min-width: 1440px) {
     .giris{
         scroll-behavior: smooth;
