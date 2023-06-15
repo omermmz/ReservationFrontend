@@ -38,7 +38,7 @@ function reservationUserHome() {
                 <p className={logGirisStyle.secondPara}>Favoriler</p>
             </div>
         </div>
-        <div className={logGirisStyle.navEnd}></div>
+        <div className={logGirisStyle.navEnd}>Top</div>
     </div>
 }
 
