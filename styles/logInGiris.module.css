@@ -148,6 +148,11 @@
 }
 
 .navEnd{
+    width: 100%;
+    background-color: green;
+    height: 200px;
+    bottom: 20px;
+    top: 20px;
 
 }
 
