@@ -1,17 +1,25 @@
 import logGirisStyle from '../styles/logInGiris.module.css'
 import resim from '../img/FT_08_06_2017_16_46_58__197.jpg'
+import TopIcon from '../img/icon-256x256.png'
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
-import NavEnd from "./navEnd";
+import React, {useRef} from "react";
 function reservationUserHome() {
 
 
-    return  <div className={logGirisStyle.body}>
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        })
+    }
+
+
+    return <div className={logGirisStyle.body}>
         <div className={logGirisStyle.navpage}>
             <div className={logGirisStyle.navparag}>halisaham.com</div>
             <div className={logGirisStyle.navButton}>
-                <div className={logGirisStyle.navP}>Hoşgeldiniz <br />Ömer MAMAZ</div>
+                <div className={logGirisStyle.navP}>Hoşgeldiniz <br/>Ömer MAMAZ</div>
                 <div className={logGirisStyle.navIcon}>O</div>
             </div>
         </div>
@@ -38,7 +46,11 @@ function reservationUserHome() {
                 <p className={logGirisStyle.secondPara}>Favoriler</p>
             </div>
         </div>
-        <div className={logGirisStyle.navEnd}>Top</div>
+        <div className={logGirisStyle.navEnd}>
+            <p className={logGirisStyle.navEndPara}>TOP</p>
+            <Image src={TopIcon} className={logGirisStyle.iconStyle} onClick={scrollToTop}></Image>
+            <p> © 2022 Formation, Inc. All rights reserved.</p>
+        </div>
     </div>
 }
 

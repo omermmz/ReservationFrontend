@@ -4,17 +4,29 @@ import Image from "next/image";
 import Link from "next/link";
 import Second from "../pages/girisSecond"
 import React from "react";
-function HomePage() {
-    return  <div className={Grr.body}>
-            <div className={Grr.navpage}>
-                <div className={Grr.navparag}>halisaham.com</div>
-                <div className={Grr.navButton}>
-                    <div className={Grr.navB}>Giriş Yap</div>
-                    <div className={Grr.navB2}>Üye Ol</div>
-                </div>
-            </div>
+import logGirisStyle from "../styles/logInGiris.module.css";
+import TopIcon from "../img/icon-256x256.png";
 
-        <Link href="#second" scroll={false}><div className={Grr.giris}>
+function HomePage() {
+
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        })
+    }
+
+    return <div className={Grr.body}>
+        <div className={Grr.navpage}>
+            <div className={Grr.navparag}>halisaham.com</div>
+            <div className={Grr.navButton}>
+                <div className={Grr.navB}>Giriş Yap</div>
+                <div className={Grr.navB2}>Üye Ol</div>
+            </div>
+        </div>
+
+        <Link href="#second" scroll={false}>
+            <div className={Grr.giris}>
                 <div className={Grr.ingiris} >
                     <p className={Grr.parag}>Gollerini atmak için <br /> arenaya çıkmaya hazır mısın?</p>
                    <Image src={resim} className={Grr.imageStyle}/>
@@ -35,6 +47,11 @@ function HomePage() {
             <div className={Grr.secondButton}>
                 <p className={Grr.secondPara}>Şeçimine Göre Boş Saha Bul</p>
             </div>
+        </div>
+        <div className={logGirisStyle.navEnd}>
+            <p className={logGirisStyle.navEndPara}>TOP</p>
+            <Image src={TopIcon} className={logGirisStyle.iconStyle} onClick={scrollToTop}></Image>
+            <p> © 2022 Formation, Inc. All rights reserved.</p>
         </div>
 
     </div>
