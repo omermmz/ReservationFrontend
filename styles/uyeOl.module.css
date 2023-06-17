@@ -93,6 +93,43 @@
     font-size: 26px;
 }
 
+.companyNameVisible {
+    visibility: visible;
+}
+
+.companyNameHidden {
+    display: none;
+}
+
+
+.companyNameHidden:empty {
+    display: none;
+}
+
+
+.companyName {
+    color: crimson;
+    font-size: 26px;
+    font-weight: normal;
+}
+
+
+.userNameInput {
+    width: 300px;
+    height: 30px;
+    border-radius: 99px;
+    font-size: medium;
+    border: 5px solid crimson;
+    color: crimson;
+    font-weight: bolder;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    outline: none;
+}
+
+.userNameLabel2 {
+    position: relative;
+}
 
 @media screen and (min-width: 1280px) {
     .giris {
