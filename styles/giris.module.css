@@ -74,12 +74,16 @@
     font-size: 45px;
 }
 
-.navparag:hover{
+.navparag:hover {
     cursor: pointer;
 }
 
-.navButton{
-    font-family: 'FFDINWebLight', sans-serif  ;
+.girisButton {
+    text-decoration: none;
+}
+
+.navButton {
+    font-family: 'FFDINWebLight', sans-serif;
     font-weight: bolder;
     display: flex;
     flex-direction: row;
@@ -92,28 +96,36 @@
     color: crimson;
 }
 
-.navB{
+.navB {
     border: 1px crimson solid;
+    border-radius: 99px;
+    padding: 20px;
+    margin-right: 50px;
+    color: crimson;
+}
+
+.navB2 {
+    border: 1px solid;
     border-radius: 99px;
     padding: 20px;
     margin-right: 50px;
 }
 
-.navB2{
-    border: 1px crimson solid;
-    border-radius: 99px;
-    padding: 20px;
-    margin-right: 50px;
-}
-
-:where(.navB,.navB2):hover{
+.navB:hover {
     color: #0B3B6B;
     cursor: pointer;
     background-color: wheat;
     border: none;
 }
 
-.secondButton{
+.navB2:hover {
+    color: #0B3B6B;
+    cursor: pointer;
+    background-color: wheat;
+    border: none;
+}
+
+.secondButton {
     top: 10%;
     position: relative;
     border: 5px black solid;

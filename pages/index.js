@@ -2,11 +2,10 @@ import Grr from '../styles/giris.module.css'
 import resim from '../img/FT_08_06_2017_16_46_58__197.jpg'
 import Image from "next/image";
 import Link from "next/link";
-import Second from "../pages/girisSecond"
 import React from "react";
 import logGirisStyle from "../styles/logInGiris.module.css";
 import TopIcon from "../img/icon-256x256.png";
-
+import GirisYap from "./girisYap";
 function HomePage() {
 
     function scrollToTop() {
@@ -20,7 +19,9 @@ function HomePage() {
         <div className={Grr.navpage}>
             <div className={Grr.navparag}>halisaham.com</div>
             <div className={Grr.navButton}>
-                <div className={Grr.navB}>Giriş Yap</div>
+                <Link href="/girisYap" className={Grr.girisButton}>
+                    <div className={Grr.navB}>Giriş Yap</div>
+                </Link>
                 <div className={Grr.navB2}>Üye Ol</div>
             </div>
         </div>
