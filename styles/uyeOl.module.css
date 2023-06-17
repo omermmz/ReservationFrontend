@@ -53,7 +53,7 @@
     cursor: pointer;
 }
 
-.divLabels {
+.divBlurWindow {
     width: 1050px;
     height: 620px;
     position: absolute;
@@ -62,103 +62,37 @@
     left: 290px;
     border-radius: 99px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    align-items: flex-start;
     background-color: rgb(125 125 125 / 0.1);
     backdrop-filter: blur(10px);
     border: 1px #0B3B6B solid;
     box-shadow: 5px 5px #0B3B6B;
 }
 
-.userNameLabel {
-    position: absolute;
-    top: 10%;
-    font-size: x-large;
-    color: crimson;
-
-}
-
-.userNameLabel2 {
-    position: absolute;
-    top: 40%;
-    font-size: x-large;
-    color: crimson;
-
-}
-
-.userNameInputDiv {
-    position: absolute;
-    top: 30%;
-}
-
-.userNameInputDiv2 {
-    position: absolute;
-    top: 60%;
-}
-
-.userNameInput {
-    width: 500px;
-    height: 50px;
-    border-radius: 99px;
-    font-size: x-large;
-    border: 5px solid crimson;
-    color: crimson;
-    font-weight: bolder;
-    text-align: center;
-    backdrop-filter: blur(10px);
-}
-
-.userNameInput:focus,
-.userNameInput:active {
-    border-color: crimson;
-    outline: none; /* inputun actif olduğunda etrafı mavi olarak seçili görünmemesine yarar. nereye ekkersen olur örn: .userNameInput içine*/
-
-}
-
-.userNameInput::placeholder {
-    opacity: 0.2;
-    color: black;
-}
-
-.buttonStyle {
-    font-family: 'FFDINWebLight', sans-serif;
-    font-weight: bolder;
+.divLabels {
     display: flex;
     flex-direction: column;
-    font-size: 25px;
-    text-align: center;
-    position: absolute;
-    align-items: center;
-    top: 75%;
-    color: burlywood;
+    align-items: flex-start;
+    margin-left: 10%;
 }
 
-.btn1 {
-    border: 1px crimson solid;
-    border-radius: 99px;
-    padding: 20px;
-}
-
-.btn2 {
-    font-size: 25px;
-}
-
-.buttonPara {
-    font-size: 15px;
-    font-weight: normal;
-    color: burlywood;
-}
-
-.btn1:hover {
+.userChooseLabel {
     color: crimson;
-    cursor: pointer;
-    background-color: #0B3B6B;
 }
 
-.btn2:hover {
-    color: crimson;
-    cursor: pointer;
+.userChooseInputDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
+
+.coUserStyle {
+    color: burlywood;
+    font-weight: bolder;
+    font-size: 26px;
+}
+
 
 @media screen and (min-width: 1280px) {
     .giris {
