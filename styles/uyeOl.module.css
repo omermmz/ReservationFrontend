@@ -127,8 +127,12 @@
     outline: none;
 }
 
-.userNameLabel2 {
+.passwordLabel {
     position: relative;
+    color: crimson;
+    font-weight: normal;
+    font-size: 26px;
+
 }
 
 @media screen and (min-width: 1280px) {

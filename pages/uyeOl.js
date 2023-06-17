@@ -53,8 +53,8 @@ function UyeOl() {
                             className={`${(valueRadio === 'True') ? UyeOlStyles.companyNameVisible : UyeOlStyles.companyNameHidden}`}>
                             <input type={"text"} className={UyeOlStyles.userNameInput} placeholder={"Username"}/>
                         </div>
-                        <div className={UyeOlStyles.userNameLabel2}>
-                            <h1>Şifre:</h1>
+                        <div>
+                            <h1 className={UyeOlStyles.passwordLabel}>Şifre:</h1>
                         </div>
                         <div className={UyeOlStyles.userNameInputDiv2}>
                             <input type={"password"} className={UyeOlStyles.userNameInput} placeholder={"Password"}/>
