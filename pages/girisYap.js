@@ -2,12 +2,15 @@ import React from "react";
 import GirisYapCss from "../styles/girisYap.module.css"
 import Image from "next/image";
 import resim from "../img/FT_08_06_2017_16_46_58__197.jpg";
+import Link from "next/link";
 
 function GirisYap() {
 
     return <div className={GirisYapCss.body}>
         <div className={GirisYapCss.navpage}>
-            <div className={GirisYapCss.navparag}>halisaham.com</div>
+            <Link href={"/"}>
+                <div className={GirisYapCss.navparag}>halisaham.com</div>
+            </Link>
             <div className={GirisYapCss.navButton}>
             </div>
         </div>
@@ -31,7 +34,9 @@ function GirisYap() {
                     <div className={GirisYapCss.buttonStyle}>
                         <div className={GirisYapCss.btn1}>Giriş Yap</div>
                         <p className={GirisYapCss.buttonPara}>Henüz üye olmadıysan</p>
-                        <div className={GirisYapCss.btn2}>Üye Ol</div>
+                        <Link href={"/uyeOl"} className={GirisYapCss.linkStyle}>
+                            <div className={GirisYapCss.btn2}>Üye Ol</div>
+                        </Link>
                     </div>
                 </div>
             </div>

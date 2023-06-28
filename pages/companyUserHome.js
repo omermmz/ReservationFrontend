@@ -18,7 +18,9 @@ function companyUserHome() {
 
     return <div className={logGirisStyle.body}>
         <div className={logGirisStyle.navpage}>
-            <div className={logGirisStyle.navparag}>halisaham.com</div>
+            <Link href={"/"}>
+                <div className={logGirisStyle.navparag}>halisaham.com</div>
+            </Link>
             <div className={logGirisStyle.navButton}>
                 <div className={logGirisStyle.navP}>Hoşgeldiniz <br/>Ömer MAMAZ</div>
                 <div className={logGirisStyle.navIcon}>O</div>

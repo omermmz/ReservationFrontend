@@ -17,12 +17,16 @@ function HomePage() {
 
     return <div className={Grr.body}>
         <div className={Grr.navpage}>
-            <div className={Grr.navparag}>halisaham.com</div>
+           <Link href={"/"}>
+               <div className={Grr.navparag}>halisaham.com</div>
+           </Link>
             <div className={Grr.navButton}>
                 <Link href="/girisYap" className={Grr.girisButton}>
                     <div className={Grr.navB}>Giriş Yap</div>
                 </Link>
-                <div className={Grr.navB2}>Üye Ol</div>
+                <Link href="/uyeOl" className={Grr.girisButton}>
+                    <div className={Grr.navB2}>Üye Ol</div>
+                </Link>
             </div>
         </div>
 

@@ -13,7 +13,7 @@
     flex-direction: row;
     background-color: burlywood;
     width: 100%;
-    height: 80px;
+    height: 71px; /* Tvde 80px*/
 }
 
 .giris {
@@ -22,6 +22,7 @@
     height: 650px;
     display: flex;
     position: relative;
+    border-bottom: rgba(11, 59, 107, 0.9) 4px solid;
 }
 
 .ingiris {
@@ -53,22 +54,7 @@
     cursor: pointer;
 }
 
-.divLabels {
-    width: 1050px;
-    height: 620px;
-    position: absolute;
-    top: 5%;
-    bottom: 5%;
-    left: 290px;
-    border-radius: 99px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: rgb(125 125 125 / 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px #0B3B6B solid;
-    box-shadow: 5px 5px #0B3B6B;
-}
+
 
 .userNameLabel {
     position: absolute;
@@ -101,7 +87,7 @@
     height: 50px;
     border-radius: 99px;
     font-size: x-large;
-    border: 5px solid crimson;
+    border: 5px solid burlywood;
     color: crimson;
     font-weight: bolder;
     text-align: center;
@@ -110,7 +96,6 @@
 
 .userNameInput:focus,
 .userNameInput:active {
-    border-color: crimson;
     outline: none; /* inputun actif olduğunda etrafı mavi olarak seçili görünmemesine yarar. nereye ekkersen olur örn: .userNameInput içine*/
 
 }
@@ -160,6 +145,11 @@
     cursor: pointer;
 }
 
+.linkStyle {
+    text-decoration: none;
+    color: burlywood;
+}
+
 @media screen and (min-width: 1280px) {
     .giris {
         height: 410px;
@@ -176,6 +166,24 @@
         top: 5%;
         font-size: 70px;
     }
+
+    .divLabels {
+        width: 1050px;
+        height: 620px;
+        position: absolute;
+        top: 5%;
+        bottom: 5%;
+        left: 290px;
+        border-radius: 99px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: rgb(125 125 125 / 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px #0B3B6B solid;
+        box-shadow: 5px 5px #0B3B6B;
+    }
+
 }
 
 /* TV EKRANI */
@@ -194,5 +202,22 @@
         left: 20%;
         top: 15%;
         font-size: 70px;
+    }
+
+    .divLabels {
+        width: 1050px;
+        height: 620px;
+        position: absolute;
+        top: 5%;
+        bottom: 5%;
+        left: 15%;
+        border-radius: 99px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: rgb(125 125 125 / 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px #0B3B6B solid;
+        box-shadow: 5px 5px #0B3B6B;
     }
 }
