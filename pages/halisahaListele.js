@@ -50,6 +50,9 @@ function HalisahaListele() {
             <td key={city.towns.districts} className={HalisahaListeleStyles.rezervButton}>Rezervasyon <br></br>Yap</td>
         </tr>
     );
+
+    /*     TODO: sayfa boyutunu aşan listelemelerde infobox tepede çıkıyor ekrana gelmiyor
+    *       <div className={HalisahaListeleStyles.labelStyle}>Şehir Seçin</div>*/
     return <div className={HalisahaListeleStyles.body}>
         <div className={HalisahaListeleStyles.navpage}>
             <Link href={"/"}>
@@ -64,6 +67,7 @@ function HalisahaListele() {
                 <Image src={resim} className={HalisahaListeleStyles.imageStyle}/>
                 <div className={HalisahaListeleStyles.blurWindowStyle}>
                     <div className={HalisahaListeleStyles.optionsDiv}>
+                        <h1 className={HalisahaListeleStyles.labelStyle}>Şehir Seçin:</h1>
                         <select className={HalisahaListeleStyles.selectStyle} onChange={e => {
                             setCityValue(e.currentTarget.value)
                         }}>
@@ -73,6 +77,7 @@ function HalisahaListele() {
                             <option>Konya</option>
                             <option>İstanbul</option>
                         </select>
+                        <h1 className={HalisahaListeleStyles.labelStyle}>İlçe Seçin:</h1>
                         <select className={HalisahaListeleStyles.selectStyle} onChange={e => {
                             setCodeValue(e.currentTarget.value)
                         }}>
@@ -82,13 +87,14 @@ function HalisahaListele() {
                             <option>TR-34</option>
                             <option>TR-42</option>
                         </select>
+                        <h1 className={HalisahaListeleStyles.labelStyle}>Fiyat Aralığı Seçin:</h1>
                         <select className={HalisahaListeleStyles.selectStyle}>
                             <option>1</option>
                             <option>1</option>
                             <option>1</option>
                             <option>1</option>
                         </select>
-                        <button onClick={changeTable}>Bana bas</button>
+                        <button onClick={changeTable} className={HalisahaListeleStyles.listeleStyle}>Listele</button>
 
 
                     </div>

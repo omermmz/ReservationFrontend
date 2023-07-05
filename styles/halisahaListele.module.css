@@ -104,7 +104,13 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    margin-top: 10px;
+    margin-top: 15px;
+}
+
+.labelStyle {
+    font-size: x-large;
+    font-weight: bolder;
+    color: white;
 }
 
 .selectStyle {
@@ -115,6 +121,32 @@
     color: white;
     background-color: cadetblue;
     outline: none;
+}
+
+.listeleStyle {
+    padding: 15px 55px;
+    border-radius: 20px;
+    border: 3px solid burlywood;
+    background-color: crimson;
+    outline: none;
+    font-size: large;
+    text-align: center;
+    color: white;
+    font-weight: bolder;
+    font-family: 'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+    box-shadow: 0 9px #999;
+
+}
+
+.listeleStyle:hover {
+    cursor: pointer;
+    background-color: red;
+}
+
+.listeleStyle:active {
+    background-color: red;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
 }
 
 .rezervButton {
