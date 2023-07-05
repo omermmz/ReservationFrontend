@@ -40,9 +40,9 @@ function HomePage() {
 
 
         <div className={Grr.denemediv} id="second">
-            <div className={Grr.secondButton}>
-                <p className={Grr.secondPara}>Halısahalar</p>
-            </div>
+           <Link href={"/halisahaListele"} className={Grr.secondButton}>
+               <p className={Grr.secondPara}>Halısahalar</p>
+           </Link>
             <div className={Grr.secondButton}>
                 <p className={Grr.secondPara}>Halısaha Ekle</p>
             </div>

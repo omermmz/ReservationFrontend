@@ -1,0 +1,68 @@
+.infoBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 850px;
+    height: 620px;
+    position: absolute;
+    top: 5%;
+    bottom: 5%;
+    left: 20%;
+    border-radius: 10px;
+    user-select: none;
+    flex-direction: column;
+    font-size: 14px;
+    padding: 12px;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
+    border: 4px solid black;
+    background-color: cadetblue;
+    gap: 10%;
+    overflow: auto;
+}
+
+.inDiv {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 3%;
+    justify-content: left;
+
+}
+
+.labelStyles {
+    text-align: left;
+    color: crimson;
+    font-size: 25px;
+    font-weight: bolder;
+    width: 34%;
+}
+
+.textStyles {
+    text-align: left;
+    color: black;
+    border-bottom: 4px solid burlywood;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: "Times New Roman", Times, serif;
+    width: 100%;
+}
+
+
+.rezervButton {
+    border: 5px solid burlywood;
+    width: 50%;
+    text-align: center;
+    border-radius: 99px;
+    font-family: "Apple Color Emoji";
+    font-weight: bolder;
+    color: crimson;
+    font-size: large;
+
+}
+
+.rezervButton:hover {
+    cursor: pointer;
+    background-color: burlywood;
+    color: white;
+}

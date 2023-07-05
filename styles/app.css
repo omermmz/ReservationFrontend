@@ -4,12 +4,25 @@ body {
     padding: 20px 20px 60px;
     max-width: 680px;
     margin: 0 auto;
+
 }
 
 html {
     scroll-behavior: smooth;
 }
 
-table, th, td {
-    border: 1px solid black;
+table {
+    border-spacing: 20px;
+}
+
+th, td {
+    border-bottom: 5px solid burlywood;
+    border-radius: 99px;
+
+}
+
+th {
+    color: #0B3B6B;
+    font-weight: bolder;
+    border-color: #0B3B6B;
 }
