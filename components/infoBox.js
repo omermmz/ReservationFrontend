@@ -23,7 +23,7 @@ export function InfoBox(props) {
         return null;
 
     return (
-        <div ref={ref} className={InfoStyles.infoBox}>
+        <div ref={ref} className={HalisahaListeleStyles.infoBox}>
             {props.message}
             <div className={InfoStyles.inDiv}>
                 <div className={InfoStyles.labelStyles}>Halısaha Adı:</div>

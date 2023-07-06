@@ -16,26 +16,6 @@
     height: 71px;
 }
 
-.girisForBlur {
-    width: 100%;
-    min-height: 100%;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    background-color: rgb(250 250 250 / 0.3);
-    backdrop-filter: blur(10px);
-    overflow: hidden;
-}
-
-.girisForBlur2 {
-    display: none;
-}
-
-.inForBlur {
-    visibility: hidden;
-}
-
 .giris {
     border-top: rgba(11, 59, 107, 0.9) 5px solid;
     width: 100%;
@@ -105,13 +85,6 @@
     font-weight: bold;
 }
 
-.optionsDiv {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    margin-top: 15px;
-}
-
 .labelStyle {
     font-size: x-large;
     font-weight: bolder;
@@ -152,89 +125,4 @@
     background-color: red;
     box-shadow: 0 5px #666;
     transform: translateY(4px);
-}
-
-.rezervButton {
-    border: 5px solid burlywood;
-    border-radius: 99px;
-    font-family: "Apple Color Emoji";
-    font-weight: bolder;
-    color: cadetblue;
-}
-
-.rezervButton:hover {
-    cursor: pointer;
-    background-color: burlywood;
-    color: crimson;
-}
-
-.container {
-    display: flex;
-    justify-content: center;
-}
-
-.container .info-box-wrapper {
-    position: absolute;
-}
-
-.infoBox {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 850px;
-    height: 620px;
-    position: absolute;
-    top: 5%;
-    bottom: 5%;
-    left: 20%;
-    border-radius: 10px;
-    user-select: none;
-    flex-direction: column;
-    font-size: 14px;
-    padding: 12px;
-    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
-    border: 4px solid black;
-    background-color: cadetblue;
-    gap: 10%;
-    overflow: auto;
-    transition-delay: 3s;
-}
-
-
-@media screen and (min-width: 1280px) {
-    .giris {
-        height: 410px;
-        scroll-behavior: smooth;
-    }
-
-    .parag {
-        scroll-behavior: smooth;
-        text-align: center;
-        position: absolute;
-        color: wheat;
-        target-position: above;
-        left: 15%;
-        top: 5%;
-        font-size: 70px;
-    }
-}
-
-
-/* TV EKRANI */
-@media screen and (min-width: 1440px) {
-    .giris {
-        scroll-behavior: smooth;
-        height: 701px;
-    }
-
-    .parag {
-        scroll-behavior: smooth;
-        text-align: center;
-        position: absolute;
-        color: wheat;
-        target-position: above;
-        left: 20%;
-        top: 15%;
-        font-size: 70px;
-    }
 }
