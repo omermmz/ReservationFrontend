@@ -32,6 +32,10 @@ function HalisahaListele() {
         myDiv.scrollTo({top: 0})
     }
 
+    const pushPage = () => {
+
+    }
+
     const sehirListele = () => cityData.map(city =>
         <tr>
             <td key={city.alpha_2_code}>{city.alpha_2_code}</td>
@@ -49,9 +53,16 @@ function HalisahaListele() {
             }}>
                 İncele
             </td>
-            <td key={city.towns.districts} className={HalisahaListeleStyles.rezervButton}
-                onClick={scrollToTop}>Rezervasyon <br></br>Yap
-            </td>
+            <Link href={{
+                pathname: "/rezervYap",
+                query: {
+                    cityName: city.name,
+                    postaNo: city.alpha_2_code
+                }
+            }}
+                  className={HalisahaListeleStyles.rezervLinkStyle}>
+                <td key={city.towns.districts} className={HalisahaListeleStyles.rezervButton2}>Rezervasyon Yap</td>
+            </Link>
         </tr>
     );
 

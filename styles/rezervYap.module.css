@@ -85,6 +85,14 @@
     font-weight: bold;
 }
 
+.optionsDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 15px;
+}
+
+
 .labelStyle {
     font-size: x-large;
     font-weight: bolder;
@@ -125,4 +133,62 @@
     background-color: red;
     box-shadow: 0 5px #666;
     transform: translateY(4px);
+}
+
+.buttonStyle {
+    border: 5px solid burlywood;
+    border-radius: 99px;
+    padding: 18px;
+    color: white;
+}
+
+.buttonStyle:hover {
+    cursor: pointer;
+    background-color: crimson;
+}
+
+.buttonStyleSelected {
+    border: 5px solid burlywood;
+    border-radius: 99px;
+    padding: 18px;
+    background-color: darkgreen;
+    text-decoration: line-through;
+}
+
+@media screen and (min-width: 1280px) {
+    .giris {
+        height: 410px;
+        scroll-behavior: smooth;
+    }
+
+    .parag {
+        scroll-behavior: smooth;
+        text-align: center;
+        position: absolute;
+        color: wheat;
+        target-position: above;
+        left: 15%;
+        top: 5%;
+        font-size: 70px;
+    }
+}
+
+
+/* TV EKRANI */
+@media screen and (min-width: 1440px) {
+    .giris {
+        scroll-behavior: smooth;
+        height: 701px;
+    }
+
+    .parag {
+        scroll-behavior: smooth;
+        text-align: center;
+        position: absolute;
+        color: wheat;
+        target-position: above;
+        left: 20%;
+        top: 15%;
+        font-size: 70px;
+    }
 }

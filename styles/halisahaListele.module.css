@@ -160,12 +160,36 @@
     font-family: "Apple Color Emoji";
     font-weight: bolder;
     color: cadetblue;
+    text-align: center;
+    width: 200px;
+    height: 20px;
+
+}
+
+.rezervButton2 {
+    border: 5px solid burlywood;
+    border-radius: 99px;
+    font-family: "Apple Color Emoji";
+    font-weight: bolder;
+    color: cadetblue;
+    text-align: center;
+    padding: 20px;
 }
 
 .rezervButton:hover {
     cursor: pointer;
     background-color: burlywood;
     color: crimson;
+}
+
+.rezervButton2:hover {
+    cursor: pointer;
+    background-color: burlywood;
+    color: crimson;
+}
+
+.rezervLinkStyle {
+    text-decoration: none;
 }
 
 .container {

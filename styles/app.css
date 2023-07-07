@@ -11,14 +11,14 @@ body {
 html {
     scroll-behavior: smooth;
 }
-
 table {
     border-spacing: 20px;
 }
 
+
 th, td {
-    border-bottom: 5px solid burlywood;
-    border-radius: 99px;
+    border-bottom: 3px solid burlywood;
+    border-radius: 19px;
 
 }
 

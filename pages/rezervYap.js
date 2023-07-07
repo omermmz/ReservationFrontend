@@ -1,11 +1,20 @@
 import React, {useState} from "react";
-import RezervYapStyles from "../styles/halisahaListele.module.css";
+import RezervYapStyles from "../styles/rezervYap.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import resim from "../img/FT_08_06_2017_16_46_58__197.jpg";
 
+export const getServerSideProps = (context) => {
+    // console.log(context.query)
+    return {
+        props: {
+            cityName: context.query.cityName, //pass it to the page props
+            postaNo: context.query.postaNo
+        }
+    }
+}
 
-function RezervazyonYap() {
+function RezervazyonYap(props) {
 
     const array = [...Array(6)]
 
@@ -24,13 +33,14 @@ function RezervazyonYap() {
 
         return (
             <tr>
-                <td>{add()}</td>
-                <td>{add()}</td>
-                <td>{add()}</td>
-                <td>{add()}</td>
+                <td className={RezervYapStyles.buttonStyle}>{add()}</td>
+                <td className={RezervYapStyles.buttonStyle}>{add()}</td>
+                <td className={RezervYapStyles.buttonStyle}>{add()}</td>
+                <td className={RezervYapStyles.buttonStyleSelected}>{add()}</td>
             </tr>
         );
     });
+
 
     return <div className={RezervYapStyles.body}>
         <div className={RezervYapStyles.navpage}>
@@ -45,6 +55,8 @@ function RezervazyonYap() {
             <div className={RezervYapStyles.ingiris}>
                 <Image src={resim} className={RezervYapStyles.imageStyle}/>
                 <div className={RezervYapStyles.blurWindowStyle} id={"containerDiv"}>
+                    <div>{props.cityName}</div>
+                    <div>{props.postaNo}</div>
                     <div className={RezervYapStyles.optionsDiv}>
                         <h1 className={RezervYapStyles.labelStyle}>Tarih Seçin:</h1>
                         <input type={"date"} className={RezervYapStyles.selectStyle} onChange={e => {
