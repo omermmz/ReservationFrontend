@@ -135,11 +135,25 @@
     transform: translateY(4px);
 }
 
+.buttonsStyle {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    flex-direction: row;
+}
+
 .buttonStyle {
     border: 5px solid burlywood;
     border-radius: 99px;
     padding: 18px;
     color: white;
+    background-color: transparent;
+    font-weight: bolder;
+    align-items: center;
+    font-size: 25px;
+    width: 300px;
+    height: 90px;
+
 }
 
 .buttonStyle:hover {
@@ -153,7 +167,15 @@
     padding: 18px;
     background-color: darkgreen;
     text-decoration: line-through;
+    color: crimson;
+    font-weight: bolder;
+    align-items: center;
+    width: 300px;
+    height: 90px;
+    font-size: 25px;
 }
+
+
 
 @media screen and (min-width: 1280px) {
     .giris {

@@ -14,6 +14,60 @@ function HalisahaListele() {
     const [cityData, setCityData] = useState([]);
     const chooseData = Data.filter(city => city.name.includes(cityValue) || city.alpha_2_code.includes(codeValue));
 
+    const reservations = [
+
+        {
+            "time": "01:00:00-02:00:00"
+        },
+        {
+            "time": "04:00:00-05:00:00"
+        },
+
+        {
+            "time": "09:00:00-10:00:00"
+        },
+        {
+            "time": "11:00:00-12:00:00"
+        },
+
+        {
+            "time": "12:00:00-13:00:00"
+        },
+        {
+            "time": "13:00:00-14:00:00"
+        },
+        {
+            "time": "14:00:00-15:00:00"
+        },
+        {
+            "time": "15:00:00-16:00:00"
+        },
+        {
+            "time": "16:00:00-17:00:00"
+        },
+        {
+            "time": "17:00:00-18:00:00"
+        },
+        {
+            "time": "18:00:00-19:00:00"
+        },
+        {
+            "time": "19:00:00-20:00:00"
+        },
+
+    ]
+
+    var timeArray = [];
+
+    reservations.map(res => {
+        timeArray.push(res.time.substring(0, 2))
+
+    });
+    var timeEnd = reservations.map(res => {
+        return res.time.substring(9, 11)
+    });
+
+
     const changeTable = () => {
         console.log(chooseData);
         setCityData(chooseData);
@@ -32,9 +86,6 @@ function HalisahaListele() {
         myDiv.scrollTo({top: 0})
     }
 
-    const pushPage = () => {
-
-    }
 
     const sehirListele = () => cityData.map(city =>
         <tr>
@@ -57,7 +108,8 @@ function HalisahaListele() {
                 pathname: "/rezervYap",
                 query: {
                     cityName: city.name,
-                    postaNo: city.alpha_2_code
+                    postaNo: city.alpha_2_code,
+                    saat: timeArray
                 }
             }}
                   className={HalisahaListeleStyles.rezervLinkStyle}>
