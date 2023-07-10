@@ -3,6 +3,8 @@ import RezervYapStyles from "../styles/rezervYap.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import resim from "../img/FT_08_06_2017_16_46_58__197.jpg";
+import SweetALert from 'sweetalert'
+
 
 export const getServerSideProps = (context) => {
     // console.log(context.query)
@@ -18,11 +20,31 @@ export const getServerSideProps = (context) => {
 function RezervazyonYap(props) {
 
     const array = [...Array(6)]
-
-    const [cityValue, setCityValue] = useState('');
+    const [date, setDate] = useState();
 
     function banabas(e) {
-        window.confirm(e.target.innerHTML);
+        SweetALert({
+            title: "Rezervasyonu Onaylıyor Musunuz?",
+            text: "Tarih: " + date + " " + "Saat: " + e.target.innerHTML,
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    SweetALert("Rezervasyonunuz Alındı!", {
+                        icon: "success",
+                    });
+                } else {
+                    SweetALert("Rezervasyon Yapmadınız!");
+                }
+            });
+    }
+
+    const dateCheck = () => {
+        SweetALert({
+            title: "Lütfen önce tarih seçin!"
+        })
     }
 
     var item = -1;
@@ -67,14 +89,17 @@ function RezervazyonYap(props) {
             <div className={RezervYapStyles.buttonsStyle}>
                 <button className={(flag === 0) ? RezervYapStyles.buttonStyle : RezervYapStyles.buttonStyleSelected}
                         disabled={(flag === 0) ? false : true} onClick={(e) => {
-                    banabas(e)
+                    (date === undefined) ? dateCheck() : banabas(e)
                 }}>{add()}</button>
                 <button className={(flag === 0) ? RezervYapStyles.buttonStyle : RezervYapStyles.buttonStyleSelected}
-                        disabled={(flag === 0) ? false : true} onClick={banabas}>{add()}</button>
+                        disabled={(flag === 0) ? false : true}
+                        onClick={(date === undefined) ? dateCheck : banabas}>{add()}</button>
                 <button className={(flag === 0) ? RezervYapStyles.buttonStyle : RezervYapStyles.buttonStyleSelected}
-                        disabled={(flag === 0) ? false : true} onClick={banabas}>{add()}</button>
+                        disabled={(flag === 0) ? false : true}
+                        onClick={(date === undefined) ? dateCheck : banabas}>{add()}</button>
                 <button className={(check(i) === 0) ? RezervYapStyles.buttonStyle : RezervYapStyles.buttonStyleSelected}
-                        disabled={(flag === 0) ? false : true} onClick={banabas}>{add()}</button>
+                        disabled={(flag === 0) ? false : true}
+                        onClick={(date === undefined) ? dateCheck : banabas}>{add()}</button>
             </div>
         );
     });
@@ -99,7 +124,7 @@ function RezervazyonYap(props) {
                     <div className={RezervYapStyles.optionsDiv}>
                         <h1 className={RezervYapStyles.labelStyle}>Tarih Seçin:</h1>
                         <input type={"date"} className={RezervYapStyles.selectStyle} onChange={e => {
-                            setCityValue(e.currentTarget.value)
+                            setDate(e.currentTarget.value)
                         }}></input>
                         <button className={RezervYapStyles.listeleStyle}>Listele</button>
                     </div>
