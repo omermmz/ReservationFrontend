@@ -118,8 +118,8 @@ function HalisahaListele() {
         </tr>
     );
 
-    /*     TODO: sayfa boyutunu aşan listelemelerde infobox tepede çıkıyor ekrana gelmiyor
-    *       içerik butonu seçiminde blur özelliği içe sinmedi*/
+    /*     TODO: içerik butonu seçiminde blur özelliği içe sinmedi
+    *       incele infoboxundaki rezervasyon yap kısmına link eklenmedi*/
     return <div className={HalisahaListeleStyles.body}>
         <div className={HalisahaListeleStyles.navpage}>
             <Link href={"/"}>

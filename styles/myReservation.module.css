@@ -1,0 +1,291 @@
+.body {
+    position: absolute;
+    align-items: flex-start;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    margin-left: auto;
+    width: 100%;
+}
+
+.navpage {
+    display: flex;
+    flex-direction: row;
+    background-color: burlywood;
+    width: 100%;
+    height: 71px;
+}
+
+.girisForBlur {
+    width: 100%;
+    min-height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: rgb(250 250 250 / 0.3);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+}
+
+.girisForBlur2 {
+    display: none;
+}
+
+.inForBlur {
+    visibility: hidden;
+}
+
+.giris {
+    border-top: rgba(11, 59, 107, 0.9) 5px solid;
+    width: 100%;
+    height: 650px;
+    display: flex;
+    position: relative;
+    border-bottom: rgba(11, 59, 107, 0.9) 4px solid;
+
+}
+
+.ingiris {
+    position: relative;
+    width: 100%;
+    height: content-box;
+
+}
+
+.imageStyle {
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+
+}
+
+.blurWindowStyle {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: rgb(125 125 125 / 0.5);
+    backdrop-filter: blur(10px);
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.navparag {
+    font-family: "Arial Rounded MT Bold";
+    color: crimson;
+    font-weight: bolder;
+    text-align: center;
+    position: absolute;
+    left: 40px;
+    margin-left: 50px;
+    padding: 10px;
+    font-size: 45px;
+}
+
+.navparag:hover {
+    cursor: pointer;
+}
+
+.tableDiv {
+    display: flex;
+    flex-direction: column;
+    margin: 12px;
+}
+
+.tableStyle {
+    color: crimson;
+    width: 100%;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+
+.optionsDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 15px;
+}
+
+.labelStyle {
+    font-size: x-large;
+    font-weight: bolder;
+    color: white;
+}
+
+.selectStyle {
+    height: 50px;
+    width: 160px;
+    border-radius: 20px;
+    border: 3px solid burlywood;
+    color: white;
+    background-color: cadetblue;
+    outline: none;
+}
+
+.listeleStyle {
+    padding: 15px 55px;
+    border-radius: 20px;
+    border: 3px solid burlywood;
+    background-color: crimson;
+    outline: none;
+    font-size: large;
+    text-align: center;
+    color: white;
+    font-weight: bolder;
+    font-family: 'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+    box-shadow: 0 9px #999;
+
+}
+
+.listeleStyle:hover {
+    cursor: pointer;
+    background-color: red;
+}
+
+.listeleStyle:active {
+    background-color: red;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.reservDiv {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    height: 150px;
+    border: 3px solid black;
+    border-radius: 9px;
+    margin-bottom: 3%;
+    align-items: center;
+    gap: 3%;
+}
+
+.paragStyle {
+    color: burlywood;
+    font-size: 15px;
+}
+
+.infoStyle {
+    color: cadetblue;
+    border-right: 5px solid white;
+    padding: 5px;
+    font-size: 15px;
+}
+
+.rezervButton {
+    border: 3px solid burlywood;
+    border-radius: 99px;
+    font-family: "Apple Color Emoji";
+    font-weight: bolder;
+    color: crimson;
+    text-align: center;
+    padding: 10px;
+    background-color: transparent;
+    font-size: 20px;
+}
+
+.rezervButton2 {
+    border: 3px solid burlywood;
+    border-radius: 99px;
+    font-family: "Apple Color Emoji";
+    font-weight: bolder;
+    color: cadetblue;
+    text-align: center;
+    padding: 10px;
+    background-color: transparent;
+    font-size: 20px;
+}
+
+.rezervButton:hover {
+    cursor: pointer;
+    background-color: burlywood;
+    color: crimson;
+}
+
+.rezervButton2:hover {
+    cursor: pointer;
+    background-color: burlywood;
+    color: cadetblue;
+}
+
+.rezervLinkStyle {
+    text-decoration: none;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.container .info-box-wrapper {
+    position: absolute;
+}
+
+.infoBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 850px;
+    height: 620px;
+    position: absolute;
+    top: 5%;
+    bottom: 5%;
+    left: 20%;
+    border-radius: 10px;
+    user-select: none;
+    flex-direction: column;
+    font-size: 14px;
+    padding: 12px;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
+    border: 4px solid black;
+    background-color: cadetblue;
+    gap: 10%;
+    overflow: auto;
+    transition-delay: 3s;
+}
+
+
+@media screen and (min-width: 1280px) {
+    .giris {
+        height: 410px;
+        scroll-behavior: smooth;
+    }
+
+    .parag {
+        scroll-behavior: smooth;
+        text-align: center;
+        position: absolute;
+        color: wheat;
+        target-position: above;
+        left: 15%;
+        top: 5%;
+        font-size: 70px;
+    }
+}
+
+
+/* TV EKRANI */
+@media screen and (min-width: 1440px) {
+    .giris {
+        scroll-behavior: smooth;
+        height: 701px;
+    }
+
+    .parag {
+        scroll-behavior: smooth;
+        text-align: center;
+        position: absolute;
+        color: wheat;
+        target-position: above;
+        left: 20%;
+        top: 15%;
+        font-size: 70px;
+    }
+}
