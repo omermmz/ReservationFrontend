@@ -1,10 +1,56 @@
-import React from "react";
+import React, {useState} from "react";
 import GirisYapCss from "../styles/girisYap.module.css"
 import Image from "next/image";
 import resim from "../img/FT_08_06_2017_16_46_58__197.jpg";
 import Link from "next/link";
+import {whoAmI} from "../components/authLoading/AuthLoading";
+import {useRouter} from 'next/router';
+
+export async function getServerSideProps({req, res}) {
+    // res.setHeader('Set-Cookie', 'some-cookie=someValue; Max-Age=0');
+    //window.history.replaceState(null,null,"")
+
+
+    return {
+        props: {}, // will be passed to the page component as props
+
+    }
+}
+
 
 function GirisYap() {
+
+
+    const Router = useRouter();
+    const [mail, setMail] = useState('');
+    const [password, setPassword] = useState('');
+    const [isLogin, setIsLogin] = useState(false);
+    const [userName, setUserName] = useState('');
+    const [userSurname, setUserSurname] = useState('');
+    const [path, setPath] = useState('');
+
+
+    const login = async () => {
+        const resp = await whoAmI(mail, password);
+
+        if (resp == null || (resp.status != null && resp.status != 200) || resp == 'networkError') {
+            alert(resp.status);
+            alert("Başarısız")
+        } else {
+            //(resp.role==="USER") ? setPath("/reservationUserHome") : setPath("/companyUserHome");
+            setUserName(resp.userName)
+            setUserSurname(resp.userSurname)
+            setIsLogin(true);
+
+            Router.push({
+                pathname: "/reservationUserHome",
+                query: {
+                    userName: resp.userName,
+                    userSurname: resp.userSurname
+                }
+            })
+        }
+    }
 
     return <div className={GirisYapCss.body}>
         <div className={GirisYapCss.navpage}>
@@ -20,19 +66,25 @@ function GirisYap() {
                 <Image src={resim} className={GirisYapCss.imageStyle}/>
                 <div className={GirisYapCss.divLabels}>
                     <div className={GirisYapCss.userNameLabel}>
-                        <h1>Kullanıcı Adı:</h1>
+                        <h1>E-Posta:</h1>
                     </div>
                     <div className={GirisYapCss.userNameInputDiv}>
-                        <input type={"text"} className={GirisYapCss.userNameInput} placeholder={"User Name"}/>
+                        <input type={"text"} className={GirisYapCss.userNameInput} placeholder={"Email"}
+                               onChange={e => {
+                                   setMail(e.currentTarget.value)
+                               }}/>
                     </div>
                     <div className={GirisYapCss.userNameLabel2}>
                         <h1>Şifre:</h1>
                     </div>
                     <div className={GirisYapCss.userNameInputDiv2}>
-                        <input type={"password"} className={GirisYapCss.userNameInput} placeholder={"Password"}/>
+                        <input type={"password"} className={GirisYapCss.userNameInput} placeholder={"Password"}
+                               onChange={e => {
+                                   setPassword(e.currentTarget.value)
+                               }}/>
                     </div>
                     <div className={GirisYapCss.buttonStyle}>
-                        <div className={GirisYapCss.btn1}>Giriş Yap</div>
+                        <div className={GirisYapCss.btn1} onClick={login}>Giriş Yap</div>
                         <p className={GirisYapCss.buttonPara}>Henüz üye olmadıysan</p>
                         <Link href={"/uyeOl"} className={GirisYapCss.linkStyle}>
                             <div className={GirisYapCss.btn2}>Üye Ol</div>

@@ -2,10 +2,12 @@ import Grr from '../styles/giris.module.css'
 import resim from '../img/FT_08_06_2017_16_46_58__197.jpg'
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, {useState} from "react";
 import logGirisStyle from "../styles/logInGiris.module.css";
 import TopIcon from "../img/icon-256x256.png";
-import GirisYap from "./girisYap";
+import {getAllCity} from "../components/authLoading/AuthLoading";
+import Head from "next/head";
+
 function HomePage() {
 
     function scrollToTop() {
@@ -16,10 +18,13 @@ function HomePage() {
     }
 
     return <div className={Grr.body}>
+        <Head>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        </Head>
         <div className={Grr.navpage}>
-           <Link href={"/"}>
-               <div className={Grr.navparag}>halisaham.com</div>
-           </Link>
+            <Link href={"/"}>
+                <div className={Grr.navparag}>halisaham.com</div>
+            </Link>
             <div className={Grr.navButton}>
                 <Link href="/girisYap" className={Grr.girisButton}>
                     <div className={Grr.navB}>Giriş Yap</div>
@@ -32,17 +37,18 @@ function HomePage() {
 
         <Link href="#second" scroll={false}>
             <div className={Grr.giris}>
-                <div className={Grr.ingiris} >
-                    <p className={Grr.parag}>Gollerini atmak için <br /> arenaya çıkmaya hazır mısın?</p>
-                   <Image src={resim} className={Grr.imageStyle}/>
+                <div className={Grr.ingiris}>
+                    <p className={Grr.parag}>Gollerini atmak için <br/> arenaya çıkmaya hazır mısın?</p>
+                    <Image src={resim} className={Grr.imageStyle}/>
                 </div>
-            </div></Link>
+            </div>
+        </Link>
 
 
         <div className={Grr.denemediv} id="second">
-           <Link href={"/halisahaListele"} className={Grr.secondButton}>
-               <p className={Grr.secondPara}>Halısahalar</p>
-           </Link>
+            <Link href={"/halisahaListele"} className={Grr.secondButton}>
+                <p className={Grr.secondPara}>Halısahalar</p>
+            </Link>
             <div className={Grr.secondButton}>
                 <p className={Grr.secondPara}>Halısaha Ekle</p>
             </div>

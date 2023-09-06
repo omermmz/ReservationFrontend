@@ -1,18 +1,24 @@
 import React, {useState} from "react";
-import RezervYapStyles from "../styles/rezervYap.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import resim from "../img/FT_08_06_2017_16_46_58__197.jpg";
 import SweetALert from 'sweetalert'
-import {addReservation, getAllEmptyTime} from "../components/authLoading/AuthLoading";
+import {addReservation, getAllEmptyTime, whoAmIWithToken} from "../components/authLoading/AuthLoading";
+import ReservationUserRezervYapStyles from "../styles/reservationUserRezervYap.module.css"
 
 
-export const getServerSideProps = (context) => {
+export const getServerSideProps = async (context) => {
     // console.log(context.query)    min={new Date().toJSON().slice(0, 10)}
+    const {req, res} = context
+    const user = await whoAmIWithToken(req.headers.cookie)
     return {
         props: {
             placeName: context.query.placeName, //pass it to the page props
             placeId: context.query.placeId,
+            token: req.headers.cookie,
+            userName: user.userName,
+            userSurname: user.userSurname,
+            userId: user.userId
             //  timeArray: context.query.timeArray
         }
     }
@@ -25,7 +31,7 @@ function RezervazyonYap(props) {
     const [times, setTimes] = useState(["0-1"]);
 
     const addRes = async (e) => {
-        const resp = addReservation(date, (e.target.innerHTML.toString().substring(0, 5) + ":00"), props.placeId, 2);
+        const resp = addReservation(date, (e.target.innerHTML.toString().substring(0, 5) + ":00"), props.placeId, props.userId);
         if (resp == null || (resp.status != null && resp.status != 200) || resp == 'networkError') {
             alert(resp.status);
             console.log(resp)
@@ -126,51 +132,62 @@ function RezervazyonYap(props) {
         }
 
         return (
-            <div className={RezervYapStyles.buttonsStyle}>
-                <button className={(flag === 0) ? RezervYapStyles.buttonStyle : RezervYapStyles.buttonStyleSelected}
-                        disabled={(flag === 0) ? false : true} onClick={(e) => {
+            <div className={ReservationUserRezervYapStyles.buttonsStyle}>
+                <button
+                    className={(flag === 0) ? ReservationUserRezervYapStyles.buttonStyle : ReservationUserRezervYapStyles.buttonStyleSelected}
+                    disabled={(flag === 0) ? false : true} onClick={(e) => {
                     (date === undefined) ? dateCheck() : banabas(e)
                 }}>{add()}</button>
-                <button className={(flag === 0) ? RezervYapStyles.buttonStyle : RezervYapStyles.buttonStyleSelected}
-                        disabled={(flag === 0) ? false : true}
-                        onClick={(date === undefined) ? dateCheck : banabas}>{add()}</button>
-                <button className={(flag === 0) ? RezervYapStyles.buttonStyle : RezervYapStyles.buttonStyleSelected}
-                        disabled={(flag === 0) ? false : true}
-                        onClick={(date === undefined) ? dateCheck : banabas}>{add()}</button>
-                <button className={(check(i) === 0) ? RezervYapStyles.buttonStyle : RezervYapStyles.buttonStyleSelected}
-                        disabled={(flag === 0) ? false : true}
-                        onClick={(date === undefined) ? dateCheck : banabas}>{add()}</button>
+                <button
+                    className={(flag === 0) ? ReservationUserRezervYapStyles.buttonStyle : ReservationUserRezervYapStyles.buttonStyleSelected}
+                    disabled={(flag === 0) ? false : true}
+                    onClick={(date === undefined) ? dateCheck : banabas}>{add()}</button>
+                <button
+                    className={(flag === 0) ? ReservationUserRezervYapStyles.buttonStyle : ReservationUserRezervYapStyles.buttonStyleSelected}
+                    disabled={(flag === 0) ? false : true}
+                    onClick={(date === undefined) ? dateCheck : banabas}>{add()}</button>
+                <button
+                    className={(check(i) === 0) ? ReservationUserRezervYapStyles.buttonStyle : ReservationUserRezervYapStyles.buttonStyleSelected}
+                    disabled={(flag === 0) ? false : true}
+                    onClick={(date === undefined) ? dateCheck : banabas}>{add()}</button>
             </div>
         );
     });
 
 
-    return <div className={RezervYapStyles.body}>
-        <div className={RezervYapStyles.navpage}>
-            <Link href={"/"}>
-                <div className={RezervYapStyles.navparag}>halisaham.com</div>
+    return <div className={ReservationUserRezervYapStyles.body}>
+        <div className={ReservationUserRezervYapStyles.navpage}>
+            <Link href={"/reservationUserHome"}>
+                <div className={ReservationUserRezervYapStyles.navparag}>halisaham.com</div>
             </Link>
-            <div className={RezervYapStyles.navButton}>
+            <div className={ReservationUserRezervYapStyles.navButton}>
+                <div
+                    className={ReservationUserRezervYapStyles.navP}>Hoşgeldiniz <br/>{props.userName} {props.userSurname}
+                </div>
+                <div
+                    className={ReservationUserRezervYapStyles.navIcon}>{props.userName.toString().substring(0, 1)}</div>
             </div>
         </div>
 
-        <div className={RezervYapStyles.giris}>
-            <div className={RezervYapStyles.ingiris}>
-                <Image src={resim} className={RezervYapStyles.imageStyle}/>
-                <div className={RezervYapStyles.blurWindowStyle}>
-                    <div className={RezervYapStyles.labelStyle}
+        <div className={ReservationUserRezervYapStyles.giris}>
+            <div className={ReservationUserRezervYapStyles.ingiris}>
+                <Image src={resim} className={ReservationUserRezervYapStyles.imageStyle}/>
+                <div className={ReservationUserRezervYapStyles.blurWindowStyle}>
+                    <div className={ReservationUserRezervYapStyles.labelStyle}
                          style={{color: "lightgoldenrodyellow"}}>{props.placeName} Rezarvasyon
                         Saatleri: {props.placeId}</div>
-                    <div className={RezervYapStyles.optionsDiv}>
-                        <h1 className={RezervYapStyles.labelStyle}>Tarih Seçin:</h1>
+                    <div className={ReservationUserRezervYapStyles.optionsDiv}>
+                        <h1 className={ReservationUserRezervYapStyles.labelStyle}>Tarih Seçin:</h1>
                         <input type={"date"}
                                max={+(new Date().toJSON().slice(0, 4)) + 1 + new Date().toJSON().slice(4, 10)}
-                               placeholder={"YYYY-MM-DD"} className={RezervYapStyles.selectStyle} onChange={e => {
-                            setDate(e.currentTarget.value)
-                        }}></input>
-                        <button className={RezervYapStyles.listeleStyle} onClick={getEmptyTime}>Listele</button>
+                               placeholder={"YYYY-MM-DD"} className={ReservationUserRezervYapStyles.selectStyle}
+                               onChange={e => {
+                                   setDate(e.currentTarget.value)
+                               }}></input>
+                        <button className={ReservationUserRezervYapStyles.listeleStyle} onClick={getEmptyTime}>Listele
+                        </button>
                     </div>
-                    <div className={RezervYapStyles.tableDiv}>
+                    <div className={ReservationUserRezervYapStyles.tableDiv}>
                         {
                             rezListe(-1, ((times[0].localeCompare("00")) ? 1 : 0), "")}
                     </div>

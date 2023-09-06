@@ -4,8 +4,29 @@ import TopIcon from '../img/icon-256x256.png'
 import Image from "next/image";
 import Link from "next/link";
 import React, {useRef} from "react";
-function reservationUserHome() {
+import {getAllEmptyTime, logout, whoAmIWithToken} from "../components/authLoading/AuthLoading";
+import {cookies} from "next/headers";
+import {useRouter} from "next/router";
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
+export const getServerSideProps = async ({req, res}) => {
+
+    const user = await whoAmIWithToken(req.headers.cookie)
+
+    return {
+        props: {
+            userName: user.userName,
+            userSurname: user.userSurname,
+            token: req.headers.cookie
+        }
+    }
+}
+
+
+function ReservationUserHome(props) {
+
+    const Router = useRouter();
 
     function scrollToTop() {
         window.scrollTo({
@@ -14,15 +35,37 @@ function reservationUserHome() {
         })
     }
 
+    const deneme = async () => {
+        //  window.history.replaceState(null,null, "/girisYap")
+        //  Router.reload(window.location.pathname);
+        //Router.push({pathname: "/girisYap"})
+        const resp = await logout(props.token);
+        console.log(resp)
+        if (resp == 'networkError') {
+            alert("olmadı")
+        } else {
+            Router.push("/girisYap")
+        }
+
+
+    }
 
     return <div className={logGirisStyle.body}>
         <div className={logGirisStyle.navpage}>
-          <Link href={"/"}>
-              <div className={logGirisStyle.navparag}>halisaham.com</div>
-          </Link>
+            <Link href={"/reservationUserHome"}>
+                <div className={logGirisStyle.navparag}>halisaham.com</div>
+            </Link>
             <div className={logGirisStyle.navButton}>
-                <div className={logGirisStyle.navP}>Hoşgeldiniz <br/>Ömer MAMAZ</div>
-                <div className={logGirisStyle.navIcon}>O</div>
+                <div className={logGirisStyle.navP}>Hoşgeldiniz <br/>{props.userName} {props.userSurname}</div>
+                <Popup trigger=
+                           {<div className={logGirisStyle.navIcon}>{props.userName.toString().substring(0, 1)}</div>}
+                       position="bottom center">
+                    <Link href={"/userSettings"}>
+                        <div className={logGirisStyle.popupButtonStyle}>Kullanıcı Ayarları</div>
+                    </Link>
+                    <div className={logGirisStyle.popupButtonStyle} onClick={deneme}>Çıkış Yap</div>
+                </Popup>
+
             </div>
         </div>
 
@@ -36,16 +79,22 @@ function reservationUserHome() {
 
         <div className={logGirisStyle.denemediv} id="second">
             <div className={logGirisStyle.secondButton}>
-                <p className={logGirisStyle.secondPara}>Halısahalar</p>
+                <Link href={"/reservationUserHalisahaListele"} style={{color: "black"}}>
+                    <p className={logGirisStyle.secondPara}>Halısahalar</p>
+                </Link>
             </div>
             <div className={logGirisStyle.secondButton}>
-                <p className={logGirisStyle.secondPara}>Rezervasyonlarım</p>
+                <Link href={"/reservationUserMyReservation"} style={{color: "black"}}>
+                    <p className={logGirisStyle.secondPara}>Rezervasyonlarım</p>
+                </Link>
             </div>
             <div className={logGirisStyle.secondButton}>
-                <p className={logGirisStyle.secondPara}>Rezervasyon Yap</p>
+                <Link href={"/reservationUserHalisahaListele"} style={{color: "black"}}>
+                    <p className={logGirisStyle.secondPara}>Rezervasyon Yap</p>
+                </Link>
             </div>
             <div className={logGirisStyle.secondButton}>
-                <p className={logGirisStyle.secondPara}>Favoriler</p>
+                <p className={logGirisStyle.secondPara}>Favoriler {props.token}</p>
             </div>
         </div>
         <div className={logGirisStyle.navEnd}>
@@ -56,4 +105,5 @@ function reservationUserHome() {
     </div>
 }
 
-export default reservationUserHome
+
+export default ReservationUserHome

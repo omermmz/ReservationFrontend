@@ -27,3 +27,8 @@ th {
     font-weight: bolder;
     border-color: #0B3B6B;
 }
+
+a {
+    text-decoration: none;
+    outline: none;
+}

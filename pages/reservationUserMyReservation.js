@@ -1,13 +1,43 @@
-import MyReservationStyles from "../styles/myReservation.module.css";
 import Link from "next/link";
 import React, {useState, useEffect} from "react";
 import Image from "next/image";
 import resim from "../img/FT_08_06_2017_16_46_58__197.jpg";
 import SweetALert from "sweetalert";
-import {deleteReservation, getMyReservations} from "../components/authLoading/AuthLoading";
+import {deleteReservation, getMyReservations, whoAmIWithToken} from "../components/authLoading/AuthLoading";
 import {useRouter} from "next/router";
+import ReservationUserMyReservation from "../styles/reservationUserMyReservation.module.css";
 
-function MyReservation({reservations}) {
+
+export const getServerSideProps = async (context) => {
+    const {req, res} = context
+    const user = await whoAmIWithToken(req.headers.cookie)
+    if (user == 'networkError') {
+        return {
+            redirect: {
+                destination: '/girisYap',
+                permanent: false,
+            },
+        };
+
+    }
+    const reservations = await getMyReservations(user.userId)
+
+    const token = req.headers.cookie
+    const userName = user.userName
+    const userSurname = user.userSurname
+
+    return {
+        props: {
+            reservations,
+            token,
+            userName,
+            userSurname
+        }
+    }
+
+}
+
+function MyReservation({reservations, token, userName, userSurname}) {
 
     const router = useRouter();
 
@@ -114,42 +144,46 @@ function MyReservation({reservations}) {
 
 
     /*     TODO: içerik butonu seçiminde blur özelliği içe sinmedi*/
-    return <div className={MyReservationStyles.body}>
-        <div className={MyReservationStyles.navpage}>
-            <Link href={"/"}>
-                <div className={MyReservationStyles.navparag}>halisaham.com</div>
+    return <div className={ReservationUserMyReservation.body}>
+        <div className={ReservationUserMyReservation.navpage}>
+            <Link href={"/reservationUserHome"}>
+                <div className={ReservationUserMyReservation.navparag}>halisaham.com</div>
             </Link>
-            <div className={MyReservationStyles.navButton}>
+            <div className={ReservationUserMyReservation.navButton}>
+                <div className={ReservationUserMyReservation.navP}>Hoşgeldiniz <br/>{userName} {userSurname}</div>
+                <div className={ReservationUserMyReservation.navIcon}>{userName.toString().substring(0, 1)}</div>
             </div>
         </div>
 
-        <div className={MyReservationStyles.giris}>
-            <div className={MyReservationStyles.ingiris}>
-                <Image src={resim} className={MyReservationStyles.imageStyle}/>
-                <div className={MyReservationStyles.blurWindowStyle} id={"containerDiv"}>
-                    <div className={MyReservationStyles.optionsDiv}>
+        <div className={ReservationUserMyReservation.giris}>
+            <div className={ReservationUserMyReservation.ingiris}>
+                <Image src={resim} className={ReservationUserMyReservation.imageStyle}/>
+                <div className={ReservationUserMyReservation.blurWindowStyle} id={"containerDiv"}>
+                    <div className={ReservationUserMyReservation.optionsDiv}>
                     </div>
-                    <div className={MyReservationStyles.tableDiv}>
+                    <div className={ReservationUserMyReservation.tableDiv}>
 
-                        <div className={MyReservationStyles.tableStyle}>
+                        <div className={ReservationUserMyReservation.tableStyle}>
 
                             {reservations.map(reservation =>
-                                <div className={MyReservationStyles.reservDiv}>
-                                    <h7 className={MyReservationStyles.paragStyle}>Halısaha Adı:</h7>
-                                    <label className={MyReservationStyles.infoStyle}>{reservation.placeName}</label>
-                                    <h7 className={MyReservationStyles.paragStyle}>Adres:</h7>
-                                    <label className={MyReservationStyles.infoStyle}>{reservation.placeAddress}</label>
-                                    <h7 className={MyReservationStyles.paragStyle}>Tarih:</h7>
+                                <div className={ReservationUserMyReservation.reservDiv}>
+                                    <h7 className={ReservationUserMyReservation.paragStyle}>Halısaha Adı:</h7>
                                     <label
-                                        className={MyReservationStyles.infoStyle}>{reservation.date.substring(8, 10) + "." + reservation.date.substring(5, 7) + "." + reservation.date.substring(0, 4)}</label>
-                                    <h7 className={MyReservationStyles.paragStyle}>Saat:</h7>
-                                    <label className={MyReservationStyles.infoStyle}>{reservation.time}</label>
-                                    <button className={MyReservationStyles.rezervButton} onClick={() => {
+                                        className={ReservationUserMyReservation.infoStyle}>{reservation.placeName}</label>
+                                    <h7 className={ReservationUserMyReservation.paragStyle}>Adres:</h7>
+                                    <label
+                                        className={ReservationUserMyReservation.infoStyle}>{reservation.placeAddress}</label>
+                                    <h7 className={ReservationUserMyReservation.paragStyle}>Tarih:</h7>
+                                    <label
+                                        className={ReservationUserMyReservation.infoStyle}>{reservation.date.substring(8, 10) + "." + reservation.date.substring(5, 7) + "." + reservation.date.substring(0, 4)}</label>
+                                    <h7 className={ReservationUserMyReservation.paragStyle}>Saat:</h7>
+                                    <label className={ReservationUserMyReservation.infoStyle}>{reservation.time}</label>
+                                    <button className={ReservationUserMyReservation.rezervButton} onClick={() => {
                                         rezervSil(reservation.date.substring(8, 10) + "." + reservation.date.substring(5, 7) + "." + reservation.date.substring(0, 4), reservation.time, reservation.id)
                                     }}>İptal Et
                                     </button>
                                     <Link href={{
-                                        pathname: "/rezervGuncelle",
+                                        pathname: "/reservationUserRezervGuncelle",
                                         query: {
                                             reservationId: reservation.id,
                                             reservationDate: reservation.date,
@@ -159,8 +193,9 @@ function MyReservation({reservations}) {
                                             reservationUserId: reservation.userId
                                         }
                                     }}
-                                          className={MyReservationStyles.rezervLinkStyle}>
-                                        <button className={MyReservationStyles.rezervButton2}>Rezervasyon Güncelle
+                                          className={ReservationUserMyReservation.rezervLinkStyle}>
+                                        <button className={ReservationUserMyReservation.rezervButton2}>Rezervasyon
+                                            Güncelle
                                         </button>
                                     </Link>
 
@@ -185,16 +220,6 @@ function MyReservation({reservations}) {
 
     </div>
 
-}
-
-export async function getStaticProps() {
-    const reservations = await getMyReservations(2)
-
-    return {
-        props: {
-            reservations,
-        }
-    }
 }
 
 
