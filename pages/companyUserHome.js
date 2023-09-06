@@ -4,8 +4,23 @@ import TopIcon from '../img/icon-256x256.png'
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import {whoAmIWithToken} from "../components/authLoading/AuthLoading";
+import {UserButton} from "../components/userButton";
 
-function companyUserHome() {
+export const getServerSideProps = async ({req, res}) => {
+
+    const user = await whoAmIWithToken(req.headers.cookie)
+
+    return {
+        props: {
+            userName: user.userName,
+            userSurname: user.userSurname,
+            token: req.headers.cookie
+        }
+    }
+}
+
+function companyUserHome(props) {
 
 
     function scrollToTop() {
@@ -18,13 +33,10 @@ function companyUserHome() {
 
     return <div className={logGirisStyle.body}>
         <div className={logGirisStyle.navpage}>
-            <Link href={"/"}>
+            <Link href={"/companyUserHome"}>
                 <div className={logGirisStyle.navparag}>halisaham.com</div>
             </Link>
-            <div className={logGirisStyle.navButton}>
-                <div className={logGirisStyle.navP}>Hoşgeldiniz <br/>Ömer MAMAZ</div>
-                <div className={logGirisStyle.navIcon}>O</div>
-            </div>
+            <UserButton userSurname={props.userSurname} userName={props.userName} token={props.token}/>
         </div>
 
         <Link href="#second" scroll={false}>
@@ -39,16 +51,20 @@ function companyUserHome() {
 
         <div className={logGirisStyle.denemediv} id="second">
             <div className={logGirisStyle.secondButton}>
-                <p className={logGirisStyle.secondPara}>Halısaham</p>
+                <Link href={"/companyUserHalisahaListele"} style={{color: "black"}}>
+                    <p className={logGirisStyle.secondPara}>Halısahaları Gör</p>
+                </Link>
             </div>
             <div className={logGirisStyle.secondButton}>
-                <p className={logGirisStyle.secondPara}>Rezervasyonlar</p>
+                <p className={logGirisStyle.secondPara}>Halısahalarım</p>
             </div>
             <div className={logGirisStyle.secondButton}>
-                <p className={logGirisStyle.secondPara}>Rezervasyon Düzenle</p>
+                <Link href={"/halisahaEkle"} style={{color: "black"}}>
+                    <p className={logGirisStyle.secondPara}>Halısaha Ekle</p>
+                </Link>
             </div>
             <div className={logGirisStyle.secondButton}>
-                <p className={logGirisStyle.secondPara}>Halısaha Ekle</p>
+                <p className={logGirisStyle.secondPara}>Halısaha Düzenle</p>
             </div>
         </div>
         <div className={logGirisStyle.navEnd}>

@@ -1,4 +1,4 @@
-import HalisahaListeleStyles from "../styles/halisahaListele.module.css";
+import ReservationUserHalisahaListeleStyle from "../styles/reservationUserHalisahaListele.module.css";
 import Link from "next/link";
 import React, {useState, useEffect} from "react";
 import Image from "next/image";
@@ -11,9 +11,29 @@ import {
     getPlacesByCityAndProvince, getPlacesByCityAndProvinceWithBetweenPrice, getPlacesByCityBetweenPrice,
     getPlacesByCityName, whoAmIWithToken
 } from "../components/authLoading/AuthLoading";
+import logGirisStyle from "../styles/logInGiris.module.css";
+import {UserButton} from "../components/userButton";
 
+export const getServerSideProps = async ({req, res}) => {
 
-function HalisahaListele({cities, places}) {
+    const user = await whoAmIWithToken(req.headers.cookie)
+    const cities = await getAllCity();
+    const places = await getAllPlaces();
+    const userName = user.userName
+    const userSurname = user.userSurname
+    const token = req.headers.cookie
+    return {
+        props: {
+            userName,
+            userSurname,
+            token,
+            cities,
+            places
+        }
+    }
+}
+
+function HalisahaListele({cities, places, userName, userSurname, token}) {
 
     const [cityValue, setCityValue] = useState('-');
     const [provinceValue, setProvinceValue] = useState('-');
@@ -106,7 +126,7 @@ function HalisahaListele({cities, places}) {
             <td key={2}>{place.phoneNumber}</td>
             <td key={3}>{place.price}</td>
             <td key={4}>{place.kapora}</td>
-            <td key={5} className={HalisahaListeleStyles.rezervButton} onClick={() => {
+            <td key={5} className={ReservationUserHalisahaListeleStyle.rezervButton} onClick={() => {
                 setShowInfo1(true);
                 setName(place.name);
                 setAddress(place.address);
@@ -117,37 +137,27 @@ function HalisahaListele({cities, places}) {
             }}>
                 İncele
             </td>
-            <Link key={7} href={{
-                pathname: "/rezervYap",
-                query: {
-                    placeName: place.name,
-                    placeId: place.id
-                }
-            }}
-                  className={HalisahaListeleStyles.rezervLinkStyle}>
-                <td key={6} className={HalisahaListeleStyles.rezervButton2}>Rezervasyon Yap</td>
-            </Link>
+
         </tr>
     );
 
     /*     TODO: içerik butonu seçiminde blur özelliği içe sinmedi
     *       incele infoboxundaki rezervasyon yap kısmına link eklenmedi*/
-    return <div className={HalisahaListeleStyles.body}>
-        <div className={HalisahaListeleStyles.navpage}>
-            <Link href={"/"}>
-                <div className={HalisahaListeleStyles.navparag}>halisaham.com</div>
+    return <div className={ReservationUserHalisahaListeleStyle.body}>
+        <div className={ReservationUserHalisahaListeleStyle.navpage}>
+            <Link href={"/companyUserHome"}>
+                <div className={ReservationUserHalisahaListeleStyle.navparag}>halisaham.com</div>
             </Link>
-            <div className={HalisahaListeleStyles.navButton}>
-            </div>
+            <UserButton userSurname={userSurname} userName={userName} token={token}/>
         </div>
 
-        <div className={HalisahaListeleStyles.giris}>
-            <div className={HalisahaListeleStyles.ingiris}>
-                <Image src={resim} className={HalisahaListeleStyles.imageStyle}/>
-                <div className={HalisahaListeleStyles.blurWindowStyle} id={"containerDiv"}>
-                    <div className={HalisahaListeleStyles.optionsDiv}>
-                        <h1 className={HalisahaListeleStyles.labelStyle}>Şehir Seçin:</h1>
-                        <select className={HalisahaListeleStyles.selectStyle} onChange={e => {
+        <div className={ReservationUserHalisahaListeleStyle.giris}>
+            <div className={ReservationUserHalisahaListeleStyle.ingiris}>
+                <Image src={resim} className={ReservationUserHalisahaListeleStyle.imageStyle}/>
+                <div className={ReservationUserHalisahaListeleStyle.blurWindowStyle} id={"containerDiv"}>
+                    <div className={ReservationUserHalisahaListeleStyle.optionsDiv}>
+                        <h1 className={ReservationUserHalisahaListeleStyle.labelStyle}>Şehir Seçin:</h1>
+                        <select className={ReservationUserHalisahaListeleStyle.selectStyle} onChange={e => {
                             setCityValue(e.currentTarget.value)
                             setProvinceValue('-')
                             setPriceValue('-')
@@ -157,8 +167,8 @@ function HalisahaListele({cities, places}) {
                                 (<option>{city.name}</option>)
                             )}
                         </select>
-                        <h1 className={HalisahaListeleStyles.labelStyle}>İlçe Seçin:</h1>
-                        <select className={HalisahaListeleStyles.selectStyle} onChange={e => {
+                        <h1 className={ReservationUserHalisahaListeleStyle.labelStyle}>İlçe Seçin:</h1>
+                        <select className={ReservationUserHalisahaListeleStyle.selectStyle} onChange={e => {
                             setProvinceValue(e.currentTarget.value)
                             setPriceValue('-')
                         }}>
@@ -169,10 +179,11 @@ function HalisahaListele({cities, places}) {
                                     )
                             )}
                         </select>
-                        <h1 className={HalisahaListeleStyles.labelStyle}>Fiyat Aralığı Seçin:</h1>
-                        <select value={priceValue} className={HalisahaListeleStyles.selectStyle} onChange={e => {
-                            setPriceValue(e.currentTarget.value)
-                        }}>
+                        <h1 className={ReservationUserHalisahaListeleStyle.labelStyle}>Fiyat Aralığı Seçin:</h1>
+                        <select value={priceValue} className={ReservationUserHalisahaListeleStyle.selectStyle}
+                                onChange={e => {
+                                    setPriceValue(e.currentTarget.value)
+                                }}>
                             {() => {
                                 if (priceValue === "-") {
                                     console.log(priceValue)
@@ -185,13 +196,15 @@ function HalisahaListele({cities, places}) {
                             <option>300/400</option>
                             <option>400/500</option>
                         </select>
-                        <button onClick={changeTable} className={HalisahaListeleStyles.listeleStyle}>Listele</button>
+                        <button onClick={changeTable}
+                                className={ReservationUserHalisahaListeleStyle.listeleStyle}>Listele
+                        </button>
 
 
                     </div>
-                    <div className={HalisahaListeleStyles.tableDiv}>
+                    <div className={ReservationUserHalisahaListeleStyle.tableDiv}>
 
-                        <table className={HalisahaListeleStyles.tableStyle}>
+                        <table className={ReservationUserHalisahaListeleStyle.tableStyle}>
                             <thead>
                             <tr>
                                 <th scope="col">Halısaha Adı</th>
@@ -209,11 +222,11 @@ function HalisahaListele({cities, places}) {
                         </table>
 
                         <div
-                            className={(showInfo1 === true) ? HalisahaListeleStyles.girisForBlur : HalisahaListeleStyles.girisForBlur2}>
-                            <div className={HalisahaListeleStyles.inForBlur}>
-                                <div className={HalisahaListeleStyles.optionsDiv}>
-                                    <h1 className={HalisahaListeleStyles.labelStyle}>Şehir Seçin:</h1>
-                                    <select className={HalisahaListeleStyles.selectStyle} onChange={e => {
+                            className={(showInfo1 === true) ? ReservationUserHalisahaListeleStyle.girisForBlur : ReservationUserHalisahaListeleStyle.girisForBlur2}>
+                            <div className={ReservationUserHalisahaListeleStyle.inForBlur}>
+                                <div className={ReservationUserHalisahaListeleStyle.optionsDiv}>
+                                    <h1 className={ReservationUserHalisahaListeleStyle.labelStyle}>Şehir Seçin:</h1>
+                                    <select className={ReservationUserHalisahaListeleStyle.selectStyle} onChange={e => {
                                         setCityValue(e.currentTarget.value)
                                     }}>
                                         <option>-</option>
@@ -222,8 +235,8 @@ function HalisahaListele({cities, places}) {
                                         <option>Konya</option>
                                         <option>İstanbul</option>
                                     </select>
-                                    <h1 className={HalisahaListeleStyles.labelStyle}>İlçe Seçin:</h1>
-                                    <select className={HalisahaListeleStyles.selectStyle} onChange={e => {
+                                    <h1 className={ReservationUserHalisahaListeleStyle.labelStyle}>İlçe Seçin:</h1>
+                                    <select className={ReservationUserHalisahaListeleStyle.selectStyle} onChange={e => {
                                         setCodeValue(e.currentTarget.value)
                                     }}>
                                         <option>-</option>
@@ -232,20 +245,21 @@ function HalisahaListele({cities, places}) {
                                         <option>TR-34</option>
                                         <option>TR-42</option>
                                     </select>
-                                    <h1 className={HalisahaListeleStyles.labelStyle}>Fiyat Aralığı Seçin:</h1>
-                                    <select className={HalisahaListeleStyles.selectStyle}>
+                                    <h1 className={ReservationUserHalisahaListeleStyle.labelStyle}>Fiyat Aralığı
+                                        Seçin:</h1>
+                                    <select className={ReservationUserHalisahaListeleStyle.selectStyle}>
                                         <option>1</option>
                                         <option>1</option>
                                         <option>1</option>
                                         <option>1</option>
                                     </select>
                                     <button onClick={changeTable}
-                                            className={HalisahaListeleStyles.listeleStyle}>Listele
+                                            className={ReservationUserHalisahaListeleStyle.listeleStyle}>Listele
                                     </button>
 
 
                                 </div>
-                                <table className={HalisahaListeleStyles.tableStyle}>
+                                <table className={ReservationUserHalisahaListeleStyle.tableStyle}>
                                     <thead>
                                     <tr>
                                         <th scope="col">Halısaha Adı</th>
@@ -265,8 +279,8 @@ function HalisahaListele({cities, places}) {
                         </div>
 
 
-                        <div className={HalisahaListeleStyles.container}>
-                            <div className={HalisahaListeleStyles.infoBoxWrapper}>
+                        <div className={ReservationUserHalisahaListeleStyle.container}>
+                            <div className={ReservationUserHalisahaListeleStyle.infoBoxWrapper}>
 
                             </div>
                         </div>
@@ -282,7 +296,7 @@ function HalisahaListele({cities, places}) {
 
                 </div>
 
-                </div>
+            </div>
 
 
         </div>
@@ -292,16 +306,5 @@ function HalisahaListele({cities, places}) {
 
 }
 
-export async function getStaticProps() {
-    const cities = await getAllCity();
-    const places = await getAllPlaces();
-
-    return {
-        props: {
-            cities,
-            places
-        }
-    }
-}
 
 export default HalisahaListele

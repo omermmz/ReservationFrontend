@@ -9,6 +9,8 @@ import {cookies} from "next/headers";
 import {useRouter} from "next/router";
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
+import {SelectNavBar} from "../components/selectNavBar";
+import {UserButton} from "../components/userButton";
 
 export const getServerSideProps = async ({req, res}) => {
 
@@ -35,38 +37,12 @@ function ReservationUserHome(props) {
         })
     }
 
-    const deneme = async () => {
-        //  window.history.replaceState(null,null, "/girisYap")
-        //  Router.reload(window.location.pathname);
-        //Router.push({pathname: "/girisYap"})
-        const resp = await logout(props.token);
-        console.log(resp)
-        if (resp == 'networkError') {
-            alert("olmadı")
-        } else {
-            Router.push("/girisYap")
-        }
-
-
-    }
-
     return <div className={logGirisStyle.body}>
         <div className={logGirisStyle.navpage}>
             <Link href={"/reservationUserHome"}>
                 <div className={logGirisStyle.navparag}>halisaham.com</div>
             </Link>
-            <div className={logGirisStyle.navButton}>
-                <div className={logGirisStyle.navP}>Hoşgeldiniz <br/>{props.userName} {props.userSurname}</div>
-                <Popup trigger=
-                           {<div className={logGirisStyle.navIcon}>{props.userName.toString().substring(0, 1)}</div>}
-                       position="bottom center">
-                    <Link href={"/userSettings"}>
-                        <div className={logGirisStyle.popupButtonStyle}>Kullanıcı Ayarları</div>
-                    </Link>
-                    <div className={logGirisStyle.popupButtonStyle} onClick={deneme}>Çıkış Yap</div>
-                </Popup>
-
-            </div>
+            <UserButton userSurname={props.userSurname} userName={props.userName} token={props.token}/>
         </div>
 
         <Link href="#second" scroll={false}><div className={logGirisStyle.giris}>

@@ -31,19 +31,21 @@ function GirisYap() {
 
 
     const login = async () => {
+        var path1;
         const resp = await whoAmI(mail, password);
 
         if (resp == null || (resp.status != null && resp.status != 200) || resp == 'networkError') {
             alert(resp.status);
             alert("Başarısız")
         } else {
-            //(resp.role==="USER") ? setPath("/reservationUserHome") : setPath("/companyUserHome");
+            (resp.role === "USER") ? path1 = "/reservationUserHome" : path1 = "/companyUserHome";
             setUserName(resp.userName)
             setUserSurname(resp.userSurname)
             setIsLogin(true);
 
+
             Router.push({
-                pathname: "/reservationUserHome",
+                pathname: path1,
                 query: {
                     userName: resp.userName,
                     userSurname: resp.userSurname

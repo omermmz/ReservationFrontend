@@ -4,10 +4,24 @@ import Link from "next/link";
 import Image from "next/image";
 import resim from "../img/FT_08_06_2017_16_46_58__197.jpg";
 import Data from '../data.json';
-import {addCity, addPlace} from "../components/authLoading/AuthLoading";
+import {addCity, addPlace, whoAmIWithToken} from "../components/authLoading/AuthLoading";
+import {UserButton} from "../components/userButton";
+
+export const getServerSideProps = async ({req, res}) => {
+
+    const user = await whoAmIWithToken(req.headers.cookie)
+
+    return {
+        props: {
+            userName: user.userName,
+            userSurname: user.userSurname,
+            token: req.headers.cookie
+        }
+    }
+}
 
 
-function HalisahaEkle() {
+function HalisahaEkle(props) {
 
     const [cityChange, setCityChange] = useState('');
     const [provinceValue, setProvinceValue] = useState('');
@@ -75,11 +89,10 @@ function HalisahaEkle() {
 
     return <div className={HalisahaEkleStyles.body}>
         <div className={HalisahaEkleStyles.navpage}>
-            <Link href={"/"}>
+            <Link href={"/companyUserHome"}>
                 <div className={HalisahaEkleStyles.navparag}>halisaham.com</div>
             </Link>
-            <div className={HalisahaEkleStyles.navButton}>
-            </div>
+            <UserButton userSurname={props.userSurname} userName={props.userName} token={props.token}/>
         </div>
 
         <div className={HalisahaEkleStyles.giris}>
