@@ -4,17 +4,18 @@ import Link from "next/link";
 import Image from "next/image";
 import resim from "../img/FT_08_06_2017_16_46_58__197.jpg";
 import Data from '../data.json';
-import {addCity, addPlace, whoAmIWithToken} from "../components/authLoading/AuthLoading";
+import {addCity, addPlace, whoAmICoUserWithToken} from "../components/authLoading/AuthLoading";
 import {UserButton} from "../components/userButton";
 
 export const getServerSideProps = async ({req, res}) => {
 
-    const user = await whoAmIWithToken(req.headers.cookie)
+    const user = await whoAmICoUserWithToken(req.headers.cookie)
 
     return {
         props: {
             userName: user.userName,
             userSurname: user.userSurname,
+            companyId: user.companyId,
             token: req.headers.cookie
         }
     }
@@ -65,7 +66,7 @@ function HalisahaEkle(props) {
           })*/
             alert("Its okay");
         }
-        const resp2 = await addPlace(placeName, price, cityChange, provinceValue, districtValue, mahalleValue, resp.id, resp.provinceId, addressNo, telNo, kapora, startTime, endTime);
+        const resp2 = await addPlace(placeName, props.companyId, price, cityChange, provinceValue, districtValue, mahalleValue, resp.id, resp.provinceId, addressNo, telNo, kapora, startTime, endTime);
         console.log(resp2);
         if (resp2 === null || (resp2.status !== null && resp2.status !== 200) || resp2 === 'networkError') {
             alert(resp2.status);

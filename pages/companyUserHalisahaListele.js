@@ -9,14 +9,14 @@ import {
     getAllCity,
     getAllPlaces, getAllPlacesWithBetweenPrice,
     getPlacesByCityAndProvince, getPlacesByCityAndProvinceWithBetweenPrice, getPlacesByCityBetweenPrice,
-    getPlacesByCityName, whoAmIWithToken
+    getPlacesByCityName, whoAmICoUserWithToken
 } from "../components/authLoading/AuthLoading";
 import logGirisStyle from "../styles/logInGiris.module.css";
 import {UserButton} from "../components/userButton";
 
 export const getServerSideProps = async ({req, res}) => {
 
-    const user = await whoAmIWithToken(req.headers.cookie)
+    const user = await whoAmICoUserWithToken(req.headers.cookie)
     const cities = await getAllCity();
     const places = await getAllPlaces();
     const userName = user.userName

@@ -4,12 +4,12 @@ import TopIcon from '../img/icon-256x256.png'
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import {whoAmIWithToken} from "../components/authLoading/AuthLoading";
+import {whoAmICoUserWithToken} from "../components/authLoading/AuthLoading";
 import {UserButton} from "../components/userButton";
 
 export const getServerSideProps = async ({req, res}) => {
 
-    const user = await whoAmIWithToken(req.headers.cookie)
+    const user = await whoAmICoUserWithToken(req.headers.cookie)
 
     return {
         props: {
@@ -56,7 +56,9 @@ function companyUserHome(props) {
                 </Link>
             </div>
             <div className={logGirisStyle.secondButton}>
-                <p className={logGirisStyle.secondPara}>Halısahalarım</p>
+                <Link href={"/companyUserMyPlaces"} style={{color: "black"}}>
+                    <p className={logGirisStyle.secondPara}>Halısahalarım</p>
+                </Link>
             </div>
             <div className={logGirisStyle.secondButton}>
                 <Link href={"/halisahaEkle"} style={{color: "black"}}>
@@ -64,7 +66,9 @@ function companyUserHome(props) {
                 </Link>
             </div>
             <div className={logGirisStyle.secondButton}>
-                <p className={logGirisStyle.secondPara}>Halısaha Düzenle</p>
+                <Link href={"/companyUserMyPlaces"} style={{color: "black"}}>
+                    <p className={logGirisStyle.secondPara}>Halısaha Düzenle</p>
+                </Link>
             </div>
         </div>
         <div className={logGirisStyle.navEnd}>

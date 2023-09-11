@@ -7,14 +7,12 @@ export const base = 'http://localhost:8080/api';
 let API = {
     login: {
         id: 1001,
-        url: base + '/reservation'
-    },
-
-    login2: {
-        id: 1002,
         url: base + '/user/whoAmI'
     },
-
+    whoAmICoUser: {
+        id: 1002,
+        url: base + '/companyuser/whoAmI'
+    },
     initializeCoUser: {
         id: 1003,
         url: base + '/companyuser'
@@ -54,8 +52,11 @@ let API = {
     updateMail: {
         id: 1012,
         url: base + '/user/updateMail'
+    },
+    getAllCompanyPlace: {
+        id: 1013,
+        url: base + '/companyuser/getAllPlace'
     }
-
 }
 
 export const logout = async (token) => {
@@ -348,7 +349,7 @@ export const login = async (userName, password) => {
 
 }
 
-export const addPlace = async (placeName, price, city, province, district, mahalle, cityId, provinceId, addressNo, telNo, kapora, startTime, endTime) => {
+export const addPlace = async (placeName, companyId, price, city, province, district, mahalle, cityId, provinceId, addressNo, telNo, kapora, startTime, endTime) => {
     let api = API.place;
     var url = api.url;
     var id = api.id;
@@ -363,7 +364,7 @@ export const addPlace = async (placeName, price, city, province, district, mahal
                 },
                 body: JSON.stringify({
                     "status": "active",
-                    "company_id": 1,
+                    "company_id": companyId,
                     "type": "Halisaha",
                     "name": placeName,
                     "price": price,
@@ -378,8 +379,7 @@ export const addPlace = async (placeName, price, city, province, district, mahal
                 credentials: 'include'
             }
         );
-        const responseJson = await response.json();
-        return responseJson;
+        return response;
 
     } catch (error) {
         return 'networkError';
@@ -592,7 +592,7 @@ export const request = async (token) => {
 }
 
 export const whoAmI = async (userName, password) => {
-    let api = API.login2;
+    let api = API.login;
     var url = api.url;
     var id = api.id;
     console.log({api: api})
@@ -619,8 +619,34 @@ export const whoAmI = async (userName, password) => {
     }
 }
 
+export const whoAmICoUserWithToken = async (token) => {
+    let api = API.whoAmICoUser;
+    var url = api.url;
+    var id = api.id;
+
+    try {
+        const response = await fetch(url,
+            {
+                method: 'GET',
+                headers: {
+                    'Cookie': token,
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                credentials: "include"
+            }
+        );
+
+
+        const responseJson = await response.json();
+        return responseJson;
+    } catch (error) {
+        return 'networkError';
+    }
+}
+
 export const whoAmIWithToken = async (token) => {
-    let api = API.login2;
+    let api = API.login;
     var url = api.url;
     var id = api.id;
     console.log({api: api})
@@ -734,6 +760,61 @@ export const updatePassword = async (token, lastPassword, newPassword) => {
     } catch (error) {
         return 'networkError'
 
+    }
+}
+
+export const getPlaceReservations = async (placeFieldId, token) => {
+    let api = API.reservation;
+    var url = api.url + '/getPlaceReservations';
+    var id = api.id;
+
+    try {
+        const response = await fetch(url,
+            {
+                method: 'POST',
+                headers: {
+                    'Cookie': token,
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    "placeFieldId": placeFieldId
+                }),
+                credentials: "include"
+            })
+        const responseJson = await response.json();
+        return responseJson;
+    } catch (error) {
+        return 'networkError'
+    }
+
+}
+
+export const getAllCompanyPlace = async (companyId, token) => {
+    let api = API.getAllCompanyPlace;
+    var url = api.url;
+    var id = api.id;
+
+    try {
+        const response = await fetch(url,
+            {
+                method: 'POST',
+                headers: {
+                    'Cookie': token,
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    "companyId": companyId
+                }),
+                credentials: "include"
+            })
+        console.log(response)
+        const respJson = await response.json();
+        console.log(respJson);
+        return respJson;
+    } catch (error) {
+        return 'networkError'
     }
 }
 
