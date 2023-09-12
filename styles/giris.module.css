@@ -1,39 +1,43 @@
 .body{
     position: absolute;
-    align-items: flex-start;
     left: 0px;
     top: 0px;
     bottom: 0px;
-    margin-left: auto;
+    margin: 0 auto;
     width: 100%;
+    height: 100%;
 }
-.navpage{
+
+.navpage {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     background-color: burlywood;
     width: 100%;
     height: 80px;
 }
 
-.giris{
-    border-top: rgba(11,59,107) 5px solid;
+.giris {
+    border-top: rgba(11, 59, 107) 5px solid;
     width: 100%;
-    height: 650px;
+    height: 100%;
+    margin: 0 auto;
     display: flex;
+    flex-direction: row;
+    justify-content: center;
     position: relative;
 }
 
-.ingiris{
-    position: relative;
+.ingiris {
     width: 100%;
-    height: content-box;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
- .ingiris2{
-    background-color: antiquewhite;
-    position: relative;
-    width: 50%;
-    height: content-box;
-}
+
 .imageStyle{
     background-repeat: no-repeat;
     height: 100%;
@@ -52,26 +56,23 @@
     color: coral;
 }
 
-.parag{
+.parag {
     text-align: center;
-    position: absolute;
     color: wheat;
-    target-position: above;
-    left: 20%;
-    top: 15%;
-    font-size: 70px;
+    position: absolute;
+    font-size: 10vw;
 }
 
-.navparag{
+.navparag {
     font-family: "Arial Rounded MT Bold";
     color: crimson;
     font-weight: bolder;
     text-align: center;
     position: absolute;
-    left: 40px;
-    margin-left: 50px;
+    left: 0;
+    margin-left: 3%;
     padding: 10px;
-    font-size: 45px;
+    font-size: 3.5vw;
 }
 
 .navparag:hover {
@@ -87,28 +88,30 @@
     font-weight: bolder;
     display: flex;
     flex-direction: row;
-    font-size: 25px;
+    font-size: 2.5vw;
     text-align: center;
     position: absolute;
     right: 0;
-    margin-top: 5px;
-    margin-right: 55px;
+    margin-right: 1%;
     color: crimson;
+    align-items: center;
+
+
 }
 
 .navB {
     border: 1px crimson solid;
     border-radius: 99px;
-    padding: 20px;
-    margin-right: 50px;
+    padding: 1vw;
     color: crimson;
+    margin: 2.5vw;
 }
 
 .navB2 {
     border: 1px solid;
     border-radius: 99px;
-    padding: 20px;
-    margin-right: 50px;
+    padding: 1vw;
+    margin: 2.5vw;
     color: crimson;
 }
 
@@ -131,22 +134,24 @@
     position: relative;
     border: 5px black solid;
     border-radius: 30px;
-    padding: 20px;
-    height: 50px;
-    margin-right: 50px;
-    margin-left: 50px;
+    padding: 30px; /* 20px yapılırsa mobilde biraz boşluk kalıyor ama daha estetik */
+    height: 4vw;
+    margin-right: 4vw;
+    margin-left: 4vw;
     background-color: wheat;
     color: black;
     text-decoration: none;
+
 }
 
-.secondPara{
+.secondPara {
     font-family: "Times New Roman", Times, serif;
     font-weight: bolder;
-    font-size: 30px;
+    font-size: 3vw;
     position: relative;
     text-align: center;
     bottom: 50%;
+    align-items: center;
 }
 .secondButton:hover {
     cursor: pointer;
@@ -160,35 +165,52 @@
     gap: 5%;
     width: 100%;
     height: 690px;
+    margin-bottom: 3vw;
 }
 
 .navEnd {
     position: relative;
     display: flex;
+    flex-direction: row;
     align-items: flex-start;
     bottom: 0px;
+    left: 0px;
     width: 100%;
-    height: 100px;
-
+    height: 4vw;
 }
 
 .navEndPara {
     position: absolute;
-    bottom: 10px;
-    right: 140px;
-    font-size: 30px;
+    bottom: 1vw;
+    font-size: 1.5vw;
+    font-family: bolder;
+    font-family: "Apple Color Emoji";
+    color: #0B3B6B;
+}
+
+.navEndButtons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: absolute;
+    right: 5vw;
+    bottom: 0.25vw;
+}
+
+.navEndTop {
+    font-size: 2vw;
     font-family: bolder;
     font-family: "Apple Color Emoji";
     color: #0B3B6B;
 }
 
 .iconStyle {
-    height: 60px;
-    width: 60px;
-    position: absolute;
-    right: 70px;
-    bottom: 30px;
-    margin-top: 100px;
+    height: 5vw;
+    width: 5vw;
+}
+
+.navEndButtons:hover {
+    cursor: pointer;
 }
 
 .iconStyle:hover {
@@ -199,10 +221,6 @@
 
 
 @media screen and (min-width: 1280px) {
-    .giris{
-        height: 410px;
-        scroll-behavior: smooth;
-    }
     .parag{
         scroll-behavior: smooth;
         text-align: center;
@@ -217,18 +235,11 @@
 
 /* TV EKRANI */
 @media screen and (min-width: 1440px) {
-    .giris{
-        scroll-behavior: smooth;
-        height: 710px;
-    }
-    .parag{
-        scroll-behavior: smooth;
-        text-align: center;
-        position: absolute;
-        color: wheat;
-        target-position: above;
-        left: 20%;
-        top: 15%;
+
+    .parag {
+
+        /*left: 20%;
+        top: 15%;*/
         font-size: 70px;
     }
 }

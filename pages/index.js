@@ -7,23 +7,27 @@ import logGirisStyle from "../styles/logInGiris.module.css";
 import TopIcon from "../img/icon-256x256.png";
 import {getAllCity} from "../components/authLoading/AuthLoading";
 import Head from "next/head";
+import {useRouter} from "next/router";
 
 function HomePage() {
+
+    const Router = useRouter()
 
     function scrollToTop() {
         window.scrollTo({
             top: 0,
-            behavior: 'smooth'
+            behavior: 'smooth',
+
         })
+        Router.push("/", undefined, {scroll: false})
+
     }
 
+
     return <div className={Grr.body}>
-        <Head>
-            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        </Head>
         <div className={Grr.navpage}>
-            <Link href={"/"}>
-                <div className={Grr.navparag}>halisaham.com</div>
+            <Link href={"/"} className={Grr.navparag}>
+                halisaham.com
             </Link>
             <div className={Grr.navButton}>
                 <Link href="/girisYap" className={Grr.girisButton}>
@@ -34,7 +38,6 @@ function HomePage() {
                 </Link>
             </div>
         </div>
-
         <Link href="#second" scroll={false}>
             <div className={Grr.giris}>
                 <div className={Grr.ingiris}>
@@ -58,11 +61,15 @@ function HomePage() {
             <div className={Grr.secondButton}>
                 <p className={Grr.secondPara}>Şeçimine Göre Boş Saha Bul</p>
             </div>
+
         </div>
-        <div className={logGirisStyle.navEnd}>
-            <p className={logGirisStyle.navEndPara}>TOP</p>
-            <Image src={TopIcon} className={logGirisStyle.iconStyle} onClick={scrollToTop}></Image>
-            <p> © 2022 Formation, Inc. All rights reserved.</p>
+
+        <div className={Grr.navEnd}>
+            <p className={Grr.navEndPara}> © 2022 Formation, Inc. All rights reserved.</p>
+            <div className={Grr.navEndButtons} onClick={scrollToTop}>
+                <p className={Grr.navEndTop}>TOP</p>
+                <Image src={TopIcon} className={Grr.iconStyle}></Image>
+            </div>
         </div>
 
     </div>

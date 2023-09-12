@@ -5,6 +5,7 @@ import resim from "../img/FT_08_06_2017_16_46_58__197.jpg";
 import Link from "next/link";
 import {whoAmI} from "../components/authLoading/AuthLoading";
 import {useRouter} from 'next/router';
+import {UserButton} from "../components/userButton";
 
 export async function getServerSideProps({req, res}) {
     // res.setHeader('Set-Cookie', 'some-cookie=someValue; Max-Age=0');
@@ -59,8 +60,6 @@ function GirisYap() {
             <Link href={"/"}>
                 <div className={GirisYapCss.navparag}>halisaham.com</div>
             </Link>
-            <div className={GirisYapCss.navButton}>
-            </div>
         </div>
 
         <div className={GirisYapCss.giris}>

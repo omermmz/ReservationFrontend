@@ -21,6 +21,7 @@ export const getServerSideProps = async ({req, res}) => {
             userSurname: user.surname,
             birthdate: user.birthdate,
             phoneNumber: user.phoneNumber,
+            userType: user.type,
             token: req.headers.cookie
 
         }
@@ -66,7 +67,7 @@ function UpdateMail(props) {
 
     return <div className={UserSettingsStyles.body}>
         <div className={UserSettingsStyles.navpage}>
-            <Link href={"/"}>
+            <Link href={(props.userType === "Reservation User") ? "/reservationUserHome" : "/companyUserHome"}>
                 <div className={UserSettingsStyles.navparag}>halisaham.com</div>
             </Link>
             <UserButton userSurname={props.userSurname} userName={props.userName}/>
