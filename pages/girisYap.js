@@ -66,27 +66,27 @@ function GirisYap() {
             <div className={GirisYapCss.ingiris}>
                 <Image src={resim} className={GirisYapCss.imageStyle}/>
                 <div className={GirisYapCss.divLabels}>
-                    <div className={GirisYapCss.userNameLabel}>
-                        <h1>E-Posta:</h1>
-                    </div>
-                    <div className={GirisYapCss.userNameInputDiv}>
-                        <input type={"text"} className={GirisYapCss.userNameInput} placeholder={"Email"}
-                               onChange={e => {
-                                   setMail(e.currentTarget.value)
-                               }}/>
-                    </div>
-                    <div className={GirisYapCss.userNameLabel2}>
-                        <h1>Şifre:</h1>
-                    </div>
-                    <div className={GirisYapCss.userNameInputDiv2}>
-                        <input type={"password"} className={GirisYapCss.userNameInput} placeholder={"Password"}
-                               onChange={e => {
-                                   setPassword(e.currentTarget.value)
-                               }}/>
-                    </div>
+
+                    <h1 className={GirisYapCss.userNameLabel}>E-Posta:</h1>
+
+
+                    <input type={"text"} className={GirisYapCss.userNameInput} placeholder={"Email"}
+                           onChange={e => {
+                               setMail(e.currentTarget.value)
+                           }}/>
+
+
+                    <h1 className={GirisYapCss.userNameLabel2}>Şifre:</h1>
+
+
+                    <input type={"password"} className={GirisYapCss.userNameInput} placeholder={"Password"}
+                           onChange={e => {
+                               setPassword(e.currentTarget.value)
+                           }}/>
+
                     <div className={GirisYapCss.buttonStyle}>
                         <div className={GirisYapCss.btn1} onClick={login}>Giriş Yap</div>
-                        <p className={GirisYapCss.buttonPara}>Henüz üye olmadıysan</p>
+                        <p className={GirisYapCss.buttonPara}>Üyeliğin yok mu?</p>
                         <Link href={"/uyeOl"} className={GirisYapCss.linkStyle}>
                             <div className={GirisYapCss.btn2}>Üye Ol</div>
                         </Link>

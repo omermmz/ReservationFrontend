@@ -1,41 +1,51 @@
 .body {
     position: absolute;
-    align-items: flex-start;
     left: 0px;
     top: 0px;
     bottom: 0px;
-    margin-left: auto;
+    margin: 0 auto;
     width: 100%;
+    height: 100%;
 }
 
 .navpage {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     background-color: burlywood;
     width: 100%;
-    height: 71px;
+    height: 80px; /* Tvde 80px*/
+    overflow: auto;
 }
 
 .giris {
     border-top: rgba(11, 59, 107, 0.9) 5px solid;
     width: 100%;
-    height: 650px;
+    height: 100%;
+    margin: 0 auto;
     display: flex;
+    flex-direction: row;
+    justify-content: center;
     position: relative;
     border-bottom: rgba(11, 59, 107, 0.9) 4px solid;
+    overflow: hidden;
 }
 
 .ingiris {
-    position: relative;
     width: 100%;
-    height: content-box;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
 }
 
 .imageStyle {
     background-repeat: no-repeat;
     height: 100%;
     width: 100%;
-    background-color: black;
 }
 
 .navparag {
@@ -43,11 +53,11 @@
     color: crimson;
     font-weight: bolder;
     text-align: center;
-    position: absolute;
-    left: 40px;
-    margin-left: 50px;
+    position: relative;
+    left: 0;
+    margin-left: 3%;
     padding: 10px;
-    font-size: 45px;
+    font-size: 3.5vw;
 }
 
 .navparag:hover {
@@ -55,20 +65,22 @@
 }
 
 .divBlurWindow {
-    width: 1050px;
-    height: 620px;
+    width: 95vw;
+    height: 90vw; /*Nest-hub max  */
     position: absolute;
     top: 5%;
     bottom: 5%;
-    left: 15%;
-    border-radius: 99px;
+    left: 1%;
+    border-radius: 9vw;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
+    justify-content: flex-start;
     background-color: rgb(125 125 125 / 0.1);
     backdrop-filter: blur(10px);
     border: 1px #0B3B6B solid;
-    box-shadow: 5px 5px #0B3B6B;
+    box-shadow: 3px 3px #0B3B6B;
+    overflow: auto;
 }
 
 .inDivLeft {
@@ -82,23 +94,24 @@
     display: flex;
     flex-direction: column;
     align-items: self-start;
-    margin-left: 10%;
+    margin-left: 5%;
 }
 
 .userChooseLabel {
     color: crimson;
+    font-size: 1.5vw;
 }
 
 .userChooseInputDiv {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    /*  display: flex;
+      flex-direction: row;
+      justify-content: space-between;*/
 }
 
 .coUserStyle {
     color: burlywood;
     font-weight: bolder;
-    font-size: 26px;
+    font-size: 1.5vw;
 }
 
 .companyNameVisible {
@@ -117,17 +130,17 @@
 
 .companyName {
     color: crimson;
-    font-size: 26px;
+    font-size: 2vw;
     font-weight: normal;
 }
 
 
 .userNameInput {
-    width: 300px;
-    height: 30px;
-    border-radius: 99px;
-    font-size: medium;
-    border: 5px solid burlywood;
+    width: 35vw;
+    height: 2vw;
+    border-radius: 9vw;
+    font-size: 1.5vw;
+    border: 3px solid burlywood;
     color: crimson;
     font-weight: bolder;
     text-align: center;
@@ -139,36 +152,42 @@
     position: relative;
     color: crimson;
     font-weight: normal;
-    font-size: 26px;
+    font-size: 2vw;
 
 }
 
 .buttonStyle {
     font-family: 'FFDINWebLight', sans-serif;
     font-weight: bolder;
-    font-size: 25px;
+    font-size: 2vw;
     text-align: center;
     align-items: center;
     color: burlywood;
     margin-top: 5%;
-    margin-left: 15%;
+
 }
 
 .btn1 {
     border: 1px crimson solid;
     border-radius: 99px;
     padding: 10px;
-    width: 200px;
-    height: 30px;
+}
+
+.girisYapButtonDiv {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 1.5vw;
 }
 
 .btn2 {
-    font-size: 25px;
+    font-size: 2vw;
     color: burlywood;
+    padding-left: 1vw;
 }
 
 .buttonPara {
-    font-size: 15px;
+    font-size: 1vw;
     font-weight: normal;
     color: burlywood;
 }
@@ -189,21 +208,7 @@
 }
 
 @media screen and (min-width: 1280px) {
-    .giris {
-        height: 410px;
-        scroll-behavior: smooth;
-    }
 
-    .parag {
-        scroll-behavior: smooth;
-        text-align: center;
-        position: absolute;
-        color: wheat;
-        target-position: above;
-        left: 15%;
-        top: 5%;
-        font-size: 70px;
-    }
 }
 
 /* TV EKRANI */
@@ -222,5 +227,24 @@
         left: 20%;
         top: 15%;
         font-size: 70px;
+    }
+
+    .divBlurWindow {
+        width: 95vw;
+        height: 40vw; /*Nest-hub max  */
+        position: absolute;
+        top: 5%;
+        bottom: 5%;
+        left: 1%;
+        border-radius: 9vw;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        background-color: rgb(125 125 125 / 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px #0B3B6B solid;
+        box-shadow: 3px 3px #0B3B6B;
+        overflow: auto;
     }
 }

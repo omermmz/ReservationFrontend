@@ -111,9 +111,8 @@ function UyeOl() {
                 <Image src={resim} className={UyeOlStyles.imageStyle}/>
                 <div className={UyeOlStyles.divBlurWindow}>
                     <div className={UyeOlStyles.inDivLeft}>
-                        <div className={UyeOlStyles.userChooseLabel}>
-                            <h1>Kullanıcı Tipinizi Seçin:</h1>
-                        </div>
+                        <h1 className={UyeOlStyles.userChooseLabel}>Kullanıcı Tipinizi Seçin:</h1>
+
                         <div className={UyeOlStyles.userChooseInputDiv}>
                             <label for={"html"} className={UyeOlStyles.coUserStyle}>Şirket Kullanıcısı</label>
                             <input onClick={show} type={"radio"} value={"HTML"}
@@ -159,10 +158,12 @@ function UyeOl() {
                                  onClick={(valueType === null) ? checkValueType : (valueType === "Reservation User") ? (userName !== null && userName !== '' && userSurname !== null && userSurname !== '' && birthDate !== null && birthDate !== '' && phoneNumber !== null && phoneNumber !== '' && email !== null && email !== '' && password !== null && password !== '' && passwordAgain !== null && passwordAgain !== '') ? addResUser : checkFillInput : (companyName !== null && companyName !== '' && userName !== null && userName !== '' && userSurname !== null && userSurname !== '' && birthDate !== null && birthDate !== '' && phoneNumber !== null && phoneNumber !== '' && email !== null && email !== '' && password !== null && password !== '' && passwordAgain !== null && passwordAgain !== '') ? addCoUser : checkFillInput}>Üye
                                 Ol
                             </div>
-                            <p className={UyeOlStyles.buttonPara}>Zaten Üyeliğin Varsa</p>
-                            <Link href="/girisYap" className={UyeOlStyles.linkStyle}>
-                                <div className={UyeOlStyles.btn2}>Giriş Yap</div>
-                            </Link>
+                            <div className={UyeOlStyles.girisYapButtonDiv}>
+                                <p className={UyeOlStyles.buttonPara}>Zaten Üyeliğin Var mı?</p>
+                                <Link href="/girisYap" className={UyeOlStyles.linkStyle}>
+                                    <div className={UyeOlStyles.btn2}>Giriş Yap</div>
+                                </Link>
+                            </div>
                         </div>
                     </div>
 

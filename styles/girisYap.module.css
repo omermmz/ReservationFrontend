@@ -1,41 +1,52 @@
 .body {
     position: absolute;
-    align-items: flex-start;
     left: 0px;
     top: 0px;
     bottom: 0px;
-    margin-left: auto;
+    margin: 0 auto;
     width: 100%;
+    height: 100%;
 }
 
 .navpage {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     background-color: burlywood;
     width: 100%;
-    height: 71px; /* Tvde 80px*/
+    height: 80px; /* Tvde 80px*/
+    overflow: auto;
 }
 
 .giris {
-    border-top: rgba(11, 59, 107, 0.9) 5px solid;
+    border-top: rgba(11, 59, 107) 5px solid;
     width: 100%;
-    height: 650px;
+    height: 100%;
+    margin: 0 auto;
     display: flex;
+    flex-direction: row;
+    justify-content: center;
     position: relative;
     border-bottom: rgba(11, 59, 107, 0.9) 4px solid;
+    overflow: hidden;
 }
 
 .ingiris {
-    position: relative;
     width: 100%;
-    height: content-box;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
 }
 
 .imageStyle {
     background-repeat: no-repeat;
     height: 100%;
     width: 100%;
-    background-color: black;
+
 }
 
 .navparag {
@@ -43,11 +54,11 @@
     color: crimson;
     font-weight: bolder;
     text-align: center;
-    position: absolute;
-    left: 40px;
-    margin-left: 50px;
+    position: relative;
+    left: 0;
+    margin-left: 3%;
     padding: 10px;
-    font-size: 45px;
+    font-size: 3.5vw;
 }
 
 .navparag:hover {
@@ -57,17 +68,15 @@
 
 
 .userNameLabel {
-    position: absolute;
-    top: 10%;
-    font-size: x-large;
+    font-size: 3vw;
+    align-items: center;
     color: crimson;
-
+    font-weight: bolder;
 }
 
 .userNameLabel2 {
-    position: absolute;
-    top: 40%;
-    font-size: x-large;
+
+    font-size: 3vw;
     color: crimson;
 
 }
@@ -83,11 +92,11 @@
 }
 
 .userNameInput {
-    width: 500px;
-    height: 50px;
+    width: 50vw;
+    height: 3.5vw;
     border-radius: 99px;
-    font-size: x-large;
-    border: 5px solid burlywood;
+    font-size: 3vw;
+    border: 1vw solid burlywood;
     color: crimson;
     font-weight: bolder;
     text-align: center;
@@ -110,16 +119,15 @@
     font-weight: bolder;
     display: flex;
     flex-direction: column;
-    font-size: 25px;
+    font-size: 3.5vw;
+    margin-top: 2.5vw;
     text-align: center;
-    position: absolute;
     align-items: center;
-    top: 75%;
     color: burlywood;
 }
 
 .btn1 {
-    border: 1px crimson solid;
+    border: 0.3vw crimson solid;
     border-radius: 99px;
     padding: 20px;
     color: burlywood;
@@ -151,39 +159,27 @@
     color: burlywood;
 }
 
+.divLabels {
+    width: 95vw;
+    height: 80vw; /*Nest-hub max  */
+    position: absolute;
+    top: 5%;
+    bottom: 5%;
+    left: 1%;
+    border-radius: 9vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: rgb(125 125 125 / 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px #0B3B6B solid;
+    box-shadow: 3px 3px #0B3B6B;
+    overflow: auto;
+}
+
 @media screen and (min-width: 1280px) {
-    .giris {
-        height: 410px;
-        scroll-behavior: smooth;
-    }
 
-    .parag {
-        scroll-behavior: smooth;
-        text-align: center;
-        position: absolute;
-        color: wheat;
-        target-position: above;
-        left: 15%;
-        top: 5%;
-        font-size: 70px;
-    }
-
-    .divLabels {
-        width: 1050px;
-        height: 620px;
-        position: absolute;
-        top: 5%;
-        bottom: 5%;
-        left: 290px;
-        border-radius: 99px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background-color: rgb(125 125 125 / 0.1);
-        backdrop-filter: blur(10px);
-        border: 1px #0B3B6B solid;
-        box-shadow: 5px 5px #0B3B6B;
-    }
 
 }
 
@@ -209,20 +205,5 @@
         font-size: 70px;
     }
 
-    .divLabels {
-        width: 1050px;
-        height: 620px;
-        position: absolute;
-        top: 5%;
-        bottom: 5%;
-        left: 15%;
-        border-radius: 99px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background-color: rgb(125 125 125 / 0.1);
-        backdrop-filter: blur(10px);
-        border: 1px #0B3B6B solid;
-        box-shadow: 5px 5px #0B3B6B;
-    }
+
 }
