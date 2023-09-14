@@ -6,6 +6,8 @@ import Link from "next/link";
 import React from "react";
 import {whoAmICoUserWithToken} from "../components/authLoading/AuthLoading";
 import {UserButton} from "../components/userButton";
+import Grr from "../styles/giris.module.css";
+import {useRouter} from "next/router";
 
 export const getServerSideProps = async ({req, res}) => {
 
@@ -22,12 +24,15 @@ export const getServerSideProps = async ({req, res}) => {
 
 function companyUserHome(props) {
 
+    const Router = useRouter()
 
     function scrollToTop() {
         window.scrollTo({
             top: 0,
-            behavior: 'smooth'
+            behavior: 'smooth',
+
         })
+        Router.push("/companyUserHome", undefined, {scroll: false})
     }
 
 
@@ -49,7 +54,7 @@ function companyUserHome(props) {
         </Link>
 
 
-        <div className={logGirisStyle.denemediv} id="second">
+        <div className={logGirisStyle.denemediv}>
             <div className={logGirisStyle.secondButton}>
                 <Link href={"/companyUserHalisahaListele"} style={{color: "black"}}>
                     <p className={logGirisStyle.secondPara}>Halısahaları Gör</p>
@@ -71,10 +76,12 @@ function companyUserHome(props) {
                 </Link>
             </div>
         </div>
-        <div className={logGirisStyle.navEnd}>
-            <p className={logGirisStyle.navEndPara}>TOP</p>
-            <Image src={TopIcon} className={logGirisStyle.iconStyle} onClick={scrollToTop}></Image>
-            <p> © 2022 Formation, Inc. All rights reserved.</p>
+        <div className={logGirisStyle.navEnd} id="second">
+            <p className={logGirisStyle.navEndPara}> © 2022 Formation, Inc. All rights reserved.</p>
+            <div className={logGirisStyle.navEndButtons} onClick={scrollToTop}>
+                <p className={logGirisStyle.navEndTop}>TOP</p>
+                <Image src={TopIcon} className={logGirisStyle.iconStyle}></Image>
+            </div>
         </div>
     </div>
 }

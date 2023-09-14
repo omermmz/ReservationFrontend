@@ -31,10 +31,14 @@ function ReservationUserHome(props) {
     const Router = useRouter();
 
     function scrollToTop() {
+
         window.scrollTo({
             top: 0,
-            behavior: 'smooth'
+            behavior: 'smooth',
+
         })
+        Router.push("/reservationUserHome", undefined, {scroll: false})
+
     }
 
     return <div className={logGirisStyle.body}>
@@ -53,7 +57,7 @@ function ReservationUserHome(props) {
         </div></Link>
 
 
-        <div className={logGirisStyle.denemediv} id="second">
+        <div className={logGirisStyle.denemediv}>
             <div className={logGirisStyle.secondButton}>
                 <Link href={"/reservationUserHalisahaListele"} style={{color: "black"}}>
                     <p className={logGirisStyle.secondPara}>Halısahalar</p>
@@ -73,10 +77,12 @@ function ReservationUserHome(props) {
                 <p className={logGirisStyle.secondPara}>Favoriler {props.token}</p>
             </div>
         </div>
-        <div className={logGirisStyle.navEnd}>
-            <p className={logGirisStyle.navEndPara}>TOP</p>
-            <Image src={TopIcon} className={logGirisStyle.iconStyle} onClick={scrollToTop}></Image>
-            <p> © 2022 Formation, Inc. All rights reserved.</p>
+        <div className={logGirisStyle.navEnd} id="second">
+            <p className={logGirisStyle.navEndPara}> © 2022 Formation, Inc. All rights reserved.</p>
+            <div className={logGirisStyle.navEndButtons} onClick={scrollToTop}>
+                <p className={logGirisStyle.navEndTop}>TOP</p>
+                <Image src={TopIcon} className={logGirisStyle.iconStyle}></Image>
+            </div>
         </div>
     </div>
 }

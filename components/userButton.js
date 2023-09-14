@@ -8,6 +8,8 @@ import {useRouter} from "next/router";
 
 export function UserButton({userName, userSurname, token}) {
 
+    const contentStyle = {background: 'white', width: '12vw'};
+    const arrowStyle = {color: 'white'};
     const Router = useRouter()
     const deneme = async () => {
         //  window.history.replaceState(null,null, "/girisYap")
@@ -24,9 +26,9 @@ export function UserButton({userName, userSurname, token}) {
 
     }
     return <div className={UserButtonStyle.navButton}>
-        <div className={UserButtonStyle.navP}>Hoşgeldiniz <br/>{userName} {userSurname}</div>
-        <Popup trigger=
-                   {<div className={UserButtonStyle.navIcon}>{userName.toString().substring(0, 1)}</div>}
+        <div className={UserButtonStyle.navP}>{userName} {userSurname}</div>
+        <Popup {...{contentStyle, arrowStyle}} trigger=
+            {<div className={UserButtonStyle.navIcon}>{userName.toString().substring(0, 1)}</div>}
                position="bottom center">
             <Link href={"/userSettings"}> <a>
                 <div className={UserButtonStyle.popupButtonStyle}>Kullanıcı Ayarları</div>
