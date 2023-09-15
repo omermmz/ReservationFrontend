@@ -1,35 +1,45 @@
 .body {
     position: absolute;
-    align-items: flex-start;
     left: 0px;
     top: 0px;
     bottom: 0px;
-    margin-left: auto;
+    margin: 0 auto;
     width: 100%;
+    height: 100%;
 }
 
 .navpage {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     background-color: burlywood;
     width: 100%;
-    height: 71px;
+    height: 80px; /* Tvde 80px*/
+    overflow: auto;
 }
 
 .giris {
     border-top: rgba(11, 59, 107, 0.9) 5px solid;
     width: 100%;
-    height: 650px;
+    height: 100%;
+    margin: 0 auto;
     display: flex;
+    flex-direction: row;
+    justify-content: center;
     position: relative;
+    overflow: hidden;
     border-bottom: rgba(11, 59, 107, 0.9) 4px solid;
 
 }
 
 .ingiris {
-    position: relative;
     width: 100%;
-    height: content-box;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
 }
 
@@ -60,11 +70,11 @@
     color: crimson;
     font-weight: bolder;
     text-align: center;
-    position: absolute;
-    left: 40px;
-    margin-left: 50px;
+    position: relative;
+    left: 0;
+    margin-left: 3%;
     padding: 10px;
-    font-size: 45px;
+    font-size: 3.5vh;
 }
 
 .navparag:hover {
@@ -78,11 +88,11 @@
 }
 
 .tableStyle {
-    color: crimson;
+    color: white;
     width: 100%;
     text-align: center;
-    font-size: 25px;
-    font-weight: bold;
+    font-size: 1.5vw;
+    font-weight: bolder;
 }
 
 .optionsDiv {
@@ -94,33 +104,35 @@
 
 
 .labelStyle {
-    font-size: x-large;
+    font-size: 2.5vw;
     font-weight: bolder;
     color: white;
 }
 
+
 .selectStyle {
-    height: 50px;
-    width: 160px;
-    border-radius: 20px;
-    border: 3px solid burlywood;
+    height: 5vw;
+    width: 15vw;
+    border-radius: 99px;
+    border: 0.5vw solid burlywood;
     color: white;
     background-color: cadetblue;
     outline: none;
+    font-size: 1.5vw;
 }
 
 .listeleStyle {
-    padding: 15px 55px;
+    padding: 1.5vw 3vw;
     border-radius: 20px;
     border: 3px solid burlywood;
     background-color: crimson;
     outline: none;
-    font-size: large;
+    font-size: 1.5vw;
     text-align: center;
     color: white;
     font-weight: bolder;
     font-family: 'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
-    box-shadow: 0 9px #999;
+    box-shadow: 0 0.5vw #999;
 
 }
 
@@ -138,7 +150,7 @@
 .buttonsStyle {
     display: flex;
     justify-content: space-between;
-    padding: 10px;
+    padding: 0.25vw;
     flex-direction: row;
 }
 
@@ -150,9 +162,10 @@
     background-color: transparent;
     font-weight: bolder;
     align-items: center;
-    font-size: 25px;
-    width: 300px;
-    height: 90px;
+    font-size: 1vh;
+    width: 25vw;
+    height: 10vh;
+    margin: 0.5vw;
 
 }
 
@@ -170,9 +183,11 @@
     color: crimson;
     font-weight: bolder;
     align-items: center;
-    width: 300px;
-    height: 90px;
-    font-size: 25px;
+    text-align: center;
+    width: 25vw;
+    height: 10vh;
+    font-size: 1vh;
+    margin: 0.5vw;
 }
 
 .buttonStyleReserved {
@@ -190,40 +205,38 @@
 }
 
 
-@media screen and (min-width: 1280px) {
-    .giris {
-        height: 410px;
-        scroll-behavior: smooth;
+@media screen and (min-width: 768px) {
+    .navparag {
+        font-size: 2vw;
     }
 
-    .parag {
-        scroll-behavior: smooth;
-        text-align: center;
-        position: absolute;
-        color: wheat;
-        target-position: above;
-        left: 15%;
-        top: 5%;
-        font-size: 70px;
-    }
-}
-
-
-/* TV EKRANI */
-@media screen and (min-width: 1440px) {
-    .giris {
-        scroll-behavior: smooth;
-        height: 701px;
+    .tableStyle {
+        font-size: 1.5vw;
     }
 
-    .parag {
-        scroll-behavior: smooth;
-        text-align: center;
-        position: absolute;
-        color: wheat;
-        target-position: above;
-        left: 20%;
-        top: 15%;
-        font-size: 70px;
+    .labelStyle {
+        font-size: 1.5vw;
     }
+
+    .listeleStyle {
+        padding: 0.5vh 8vh;
+    }
+
+    .selectStyle {
+        height: 3vw;
+        width: 12vw;
+        border-radius: 20px;
+        font-size: 1.5vh;
+        border: 0.5vh solid burlywood;
+    }
+
+    .buttonStyle {
+        font-size: 2vw;
+    }
+
+    .buttonStyleSelected {
+        font-size: 2vw;
+    }
+
+
 }

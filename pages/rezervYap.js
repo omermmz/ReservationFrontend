@@ -159,7 +159,7 @@ function RezervazyonYap(props) {
                 <Image src={resim} className={RezervYapStyles.imageStyle}/>
                 <div className={RezervYapStyles.blurWindowStyle}>
                     <div className={RezervYapStyles.labelStyle}
-                         style={{color: "lightgoldenrodyellow"}}>{props.placeName} Rezarvasyon
+                         style={{color: "lightgoldenrodyellow", fontSize: "2vh"}}>{props.placeName} Rezarvasyon
                         Saatleri: {props.placeId}</div>
                     <div className={RezervYapStyles.optionsDiv}>
                         <h1 className={RezervYapStyles.labelStyle}>Tarih Seçin:</h1>
