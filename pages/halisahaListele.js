@@ -106,27 +106,29 @@ function HalisahaListele({cities, places}) {
             <td key={2}>{place.phoneNumber}</td>
             <td key={3}>{place.price}</td>
             <td key={4}>{place.kapora}</td>
-            <td key={5} className={HalisahaListeleStyles.rezervButton} onClick={() => {
-                setShowInfo1(true);
-                setName(place.name);
-                setAddress(place.address);
-                setPrice(place.price);
-                setKapora(place.kapora);
-                setPhone(place.phoneNumber);
-                scrollToTop()
-            }}>
-                İncele
-            </td>
-            <Link key={7} href={{
-                pathname: "/rezervYap",
-                query: {
-                    placeName: place.name,
-                    placeId: place.id
-                }
-            }}
-                  className={HalisahaListeleStyles.rezervLinkStyle}>
-                <td key={6} className={HalisahaListeleStyles.rezervButton2}>Rezervasyon Yap</td>
-            </Link>
+            <div className={HalisahaListeleStyles.rezervButtonDiv}>
+                <div key={5} className={HalisahaListeleStyles.rezervButton} onClick={() => {
+                    setShowInfo1(true);
+                    setName(place.name);
+                    setAddress(place.address);
+                    setPrice(place.price);
+                    setKapora(place.kapora);
+                    setPhone(place.phoneNumber);
+                    scrollToTop()
+                }}>
+                    İncele
+                </div>
+                <Link key={7} href={{
+                    pathname: "/rezervYap",
+                    query: {
+                        placeName: place.name,
+                        placeId: place.id
+                    }
+                }}
+                      className={HalisahaListeleStyles.rezervLinkStyle}>
+                    <div key={6} className={HalisahaListeleStyles.rezervButton2}>Rezervasyon Yap</div>
+                </Link>
+            </div>
         </tr>
     );
 
