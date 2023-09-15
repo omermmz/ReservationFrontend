@@ -178,32 +178,10 @@
     overflow: auto;
 }
 
-@media screen and (min-width: 1280px) {
 
-
-}
 
 .aStyle {
     color: burlywood;
 }
 
-/* TV EKRANI */
-@media screen and (min-width: 1440px) {
-    .giris {
-        scroll-behavior: smooth;
-        height: 701px;
-    }
 
-    .parag {
-        scroll-behavior: smooth;
-        text-align: center;
-        position: absolute;
-        color: wheat;
-        target-position: above;
-        left: 20%;
-        top: 15%;
-        font-size: 70px;
-    }
-
-
-}

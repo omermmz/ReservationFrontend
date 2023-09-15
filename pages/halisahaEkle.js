@@ -154,8 +154,6 @@ function HalisahaEkle(props) {
                                 </select>
 
                             </div>
-                        </div>
-                        <div className={HalisahaEkleStyles.inputsDiv}>
 
                             <div className={HalisahaEkleStyles.inputDiv}>
                                 <div className={HalisahaEkleStyles.labelStyle}>Adres No:</div>
@@ -164,6 +162,10 @@ function HalisahaEkle(props) {
                                     setAddressNo(e.currentTarget.value)
                                 }}/>
                             </div>
+
+                        </div>
+                        <div className={HalisahaEkleStyles.inputsDiv}>
+
 
                             <div className={HalisahaEkleStyles.inputDiv}>
                                 <div className={HalisahaEkleStyles.labelStyle}>Telefon Numarası:</div>
@@ -211,9 +213,10 @@ function HalisahaEkle(props) {
                                     </select>
                                 </div>
                             </div>
+                            <div className={HalisahaEkleStyles.ekleButton} onClick={addCi}>Halısaha Ekle</div>
                         </div>
                     </div>
-                    <div className={HalisahaEkleStyles.ekleButton} onClick={addCi}>Halısaha Ekle</div>
+
                 </div>
             </div>
         </div>
