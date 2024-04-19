@@ -2,7 +2,7 @@ import React from 'react'
 import {useRouter} from "next/router";
 
 
-export const base = 'http://localhost:8080/api';
+export const base = 'http://localhost:8080/api'; //'http://147.182.193.234:8080/api';  //
 
 let API = {
     login: {
@@ -70,6 +70,7 @@ export const logout = async (token) => {
             headers: {
                 'Cookie': token,
                 'Accept': 'application/json',
+                'Access-Control-Allow-Credentials': 'true',
                 'Content-Type': 'application/json'
             },
             credentials: 'include'
@@ -92,6 +93,7 @@ export const getAllCity = async () => {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
+                'Access-Control-Allow-Credentials': 'true',
                 'Content-Type': 'application/json'
             },
             credentials: 'include'
@@ -113,6 +115,7 @@ export const getAllPlaces = async () => {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
+                'Access-Control-Allow-Credentials': 'true',
                 'Content-Type': 'application/json'
             },
             credentials: 'include'
@@ -134,6 +137,7 @@ export const getPlacesByCityName = async (cityName) => {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
+                'Access-Control-Allow-Credentials': 'true',
                 'Content-Type': 'application/json'
             },
             credentials: 'include'
@@ -155,6 +159,7 @@ export const getPlacesByCityAndProvince = async (cityName, provinceName) => {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
+                'Access-Control-Allow-Credentials': 'true',
                 'Content-Type': 'application/json'
             },
             credentials: 'include'
@@ -176,6 +181,7 @@ export const getPlacesByCityBetweenPrice = async (cityName, prices) => {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
+                'Access-Control-Allow-Credentials': 'true',
                 'Content-Type': 'application/json'
             },
             credentials: 'include'
@@ -197,6 +203,7 @@ export const getPlacesByCityAndProvinceWithBetweenPrice = async (cityName, provi
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
+                'Access-Control-Allow-Credentials': 'true',
                 'Content-Type': 'application/json'
             },
             credentials: 'include'
@@ -218,6 +225,7 @@ export const getAllPlacesWithBetweenPrice = async (prices) => {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
+                'Access-Control-Allow-Credentials': 'true',
                 'Content-Type': 'application/json'
             },
             credentials: 'include'
@@ -240,6 +248,7 @@ export const getAllEmptyTime = async (date, placeId) => {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
+                    'Access-Control-Allow-Credentials': 'true',
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
@@ -270,6 +279,7 @@ export const updateReservation = async (reservationId, newDate, newTime, placeId
                 method: 'PUT',
                 headers: {
                     'Accept': 'application/json',
+                    'Access-Control-Allow-Credentials': 'true',
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
@@ -303,6 +313,7 @@ export const loginForUser = async (id, userName, password) => {
                 headers: {
                     'Authorization': 'Basic ' + window.btoa(userName + ':' + password),
                     'Accept': 'application/json',
+                    'Access-Control-Allow-Credentials': 'true',
                     'Content-Type': 'application/json'
                 },
                 credentials: 'include'
@@ -333,6 +344,7 @@ export const login = async (userName, password) => {
                 headers: {
                     'Authorization': 'Basic ' + window.btoa(userName + ':' + password),
                     'Accept': 'application/json',
+                    'Access-Control-Allow-Credentials': 'true',
                     'Content-Type': 'application/json'
                 },
                 credentials: 'include'
@@ -360,6 +372,7 @@ export const addPlace = async (placeName, companyId, price, city, province, dist
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
+                    'Access-Control-Allow-Credentials': 'true',
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
@@ -398,6 +411,7 @@ export const addCity = async (cityName, provinceName) => {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
+                    'Access-Control-Allow-Credentials': 'true',
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
@@ -429,6 +443,7 @@ export const addReservation = async (date, time, placeId, userId) => {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
+                    'Access-Control-Allow-Credentials': 'true',
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
@@ -442,6 +457,7 @@ export const addReservation = async (date, time, placeId, userId) => {
         );
         return response;
     } catch (error) {
+        console.log("selam")
         return 'networkError';
     }
 }
@@ -457,6 +473,7 @@ export const getMyReservations = async (userId) => {
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json',
+                    'Access-Control-Allow-Credentials': 'true',
                     'Content-Type': 'application/json'
                 },
                 credentials: 'include'
@@ -480,6 +497,7 @@ export const deleteReservation = async (reservationId) => {
                 method: 'DELETE',
                 headers: {
                     'Accept': 'application/json',
+                    'Access-Control-Allow-Credentials': 'true',
                     'Content-Type': 'application/json'
                 },
                 credentials: 'include'
@@ -500,10 +518,18 @@ export const addCompanyUser = async (companyName, userName, userSurname, userBir
     try {
         const response = await fetch(url,
             {
+
+                mode: 'cors',
                 method: 'POST',
+
                 headers: {
                     'Accept': 'application/json',
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Credentials': 'true',
+                    //'Access-Control-Allow-Origin': "http://localhost:3000",
+                    //'Access-Control-Allow-Methods': 'POST,GET,OPTIONS,PUT,OPTIONS,PATCH',
+                    //'Access-Control-Allow-Headers' : 'Access-Control-Allow-Headers,Access-Control-Allow-Origin,Access-Control-Request-Method, Access-Control-Request-Headers,Origin,Cache-Control, Content-Type, Authorization, Access-Control-Allow-Methods'
+
                 },
                 body: JSON.stringify({
                     "companyStatus": "Active",
@@ -516,14 +542,17 @@ export const addCompanyUser = async (companyName, userName, userSurname, userBir
                     "email": email,
                     "password": password
                 }),
-                credentials: 'include'
+                credentials: 'include',
+
             }
         );
-        console.log(response.status)
+        console.log(response)
+
         const responseJson = await response.json();
-        console.log(responseJson.status)
+        console.log(responseJson)
         return responseJson;
     } catch (error) {
+        console.log(error.toString())
         return 'networkError';
     }
 }
@@ -536,10 +565,17 @@ export const addReservationUser = async (userName, userSurname, userBirthdate, p
     try {
         const response = await fetch(url,
             {
+
+                //mode: 'cors',
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
-                    'Content-Type': 'application/json'
+                    'Access-Control-Allow-Credentials': 'true',
+                    'Content-Type': 'application/json',
+                    // 'Access-Control-Allow-Origin': '*',
+
+                    //'Access-Control-Allow-Methods': 'POST,GET,OPTIONS',
+                    // 'Access-Control-Allow-Headers' : 'Access-Control-Allow-Headers,Access-Control-Allow-Origin,Access-Control-Request-Method, Access-Control-Request-Headers,Origin,Cache-Control, Content-Type, Authorization'
                 },
                 body: JSON.stringify({
                     "status": "Active",
@@ -552,11 +588,12 @@ export const addReservationUser = async (userName, userSurname, userBirthdate, p
                     "password": password
                 }),
                 credentials: 'include'
+
             }
         );
         console.log(response.status)
         const responseJson = await response.json();
-        console.log(responseJson.status)
+        console.log(responseJson.headers)
         return responseJson;
     } catch (error) {
         return 'networkError';
@@ -576,6 +613,7 @@ export const request = async (token) => {
                 headers: {
                     'Cookie': token,
                     'Accept': 'application/json',
+                    'Access-Control-Allow-Credentials': 'true',
                     'Content-Type': 'application/json'
                 },
                 credentials: 'include'
@@ -604,7 +642,9 @@ export const whoAmI = async (userName, password) => {
                 headers: {
                     'Authorization': 'Basic ' + window.btoa(userName + ':' + password),
                     'Accept': 'application/json',
+                    'Access-Control-Allow-Credentials': 'true',
                     'Content-Type': 'application/json',
+                    'Access-Control-Allow-Headers': 'Access-Control-Allow-Headers,Access-Control-Allow-Origin,Access-Control-Request-Method, Access-Control-Request-Headers,Origin,Cache-Control, Content-Type, Authorization, Access-Control-Allow-Methods'
                 },
                 credentials: "include"
             }
@@ -631,7 +671,9 @@ export const whoAmICoUserWithToken = async (token) => {
                 headers: {
                     'Cookie': token,
                     'Accept': 'application/json',
+                    'Access-Control-Allow-Credentials': 'true',
                     'Content-Type': 'application/json',
+                    'Access-Control-Allow-Headers': 'Access-Control-Allow-Headers,Access-Control-Allow-Origin,Access-Control-Request-Method, Access-Control-Request-Headers,Origin,Cache-Control, Content-Type, Authorization, Access-Control-Allow-Methods'
                 },
                 credentials: "include"
             }
@@ -658,7 +700,9 @@ export const whoAmIWithToken = async (token) => {
                 headers: {
                     'Cookie': token,
                     'Accept': 'application/json',
+                    'Access-Control-Allow-Credentials': 'true',
                     'Content-Type': 'application/json',
+                    'Access-Control-Allow-Headers': 'Access-Control-Allow-Headers,Access-Control-Allow-Origin,Access-Control-Request-Method, Access-Control-Request-Headers,Origin,Cache-Control, Content-Type, Authorization, Access-Control-Allow-Methods'
                 },
                 credentials: "include"
             }
@@ -688,6 +732,7 @@ export const getUserInfo = async (token) => {
                 headers: {
                     'Cookie': token,
                     'Accept': 'application/json',
+                    'Access-Control-Allow-Credentials': 'true',
                     'Content-Type': 'application/json',
                 },
                 credentials: "include"
@@ -714,6 +759,7 @@ export const updateUserInfo = async (token, companyName, userName, userSurname, 
                 headers: {
                     'Cookie': token,
                     'Accept': 'application/json',
+                    'Access-Control-Allow-Credentials': 'true',
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
@@ -747,6 +793,7 @@ export const updatePassword = async (token, lastPassword, newPassword) => {
                 headers: {
                     'Cookie': token,
                     'Accept': 'application/json',
+                    'Access-Control-Allow-Credentials': 'true',
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
@@ -775,6 +822,7 @@ export const getPlaceReservations = async (placeFieldId, token) => {
                 headers: {
                     'Cookie': token,
                     'Accept': 'application/json',
+                    'Access-Control-Allow-Credentials': 'true',
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
@@ -802,6 +850,7 @@ export const getAllCompanyPlace = async (companyId, token) => {
                 headers: {
                     'Cookie': token,
                     'Accept': 'application/json',
+                    'Access-Control-Allow-Credentials': 'true',
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
@@ -831,6 +880,7 @@ export const updateMail = async (token, newMail) => {
                 headers: {
                     'Cookie': token,
                     'Accept': 'application/json',
+                    'Access-Control-Allow-Credentials': 'true',
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({

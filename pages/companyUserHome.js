@@ -8,6 +8,7 @@ import {whoAmICoUserWithToken} from "../components/authLoading/AuthLoading";
 import {UserButton} from "../components/userButton";
 import Grr from "../styles/giris.module.css";
 import {useRouter} from "next/router";
+import UserNavBar from "../components/userNavBar";
 
 export const getServerSideProps = async ({req, res}) => {
 
@@ -37,12 +38,8 @@ function companyUserHome(props) {
 
 
     return <div className={logGirisStyle.body}>
-        <div className={logGirisStyle.navpage}>
-            <Link href={"/companyUserHome"}>
-                <div className={logGirisStyle.navparag}>halisaham.com</div>
-            </Link>
-            <UserButton userSurname={props.userSurname} userName={props.userName} token={props.token}/>
-        </div>
+        <UserNavBar navigator={"/companyUserHome"} userSurname={props.userSurname} userName={props.userName}
+                    token={props.token}/>
 
         <Link href="#second" scroll={false}>
             <div className={logGirisStyle.giris}>

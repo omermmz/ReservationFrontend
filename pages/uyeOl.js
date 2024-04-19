@@ -41,7 +41,7 @@ function UyeOl() {
         if (resp === 'networkError') {
             console.log(resp.status)
             SweetALert({
-                title: "Kullanıcı eklenemedi!",
+                title: resp.toString(),
                 icon: "warning",
                 dangerMode: true,
             })
@@ -114,12 +114,12 @@ function UyeOl() {
                         <h1 className={UyeOlStyles.userChooseLabel}>Kullanıcı Tipinizi Seçin:</h1>
 
                         <div className={UyeOlStyles.userChooseInputDiv}>
-                            <label for={"html"} className={UyeOlStyles.coUserStyle}>Şirket Kullanıcısı</label>
+                            <label className={UyeOlStyles.coUserStyle}>Şirket Kullanıcısı</label>
                             <input onClick={show} type={"radio"} value={"HTML"}
                                    id={"html"} name={"fav-language"}/>
                         </div>
                         <div className={UyeOlStyles.userChooseInputDiv}>
-                            <label for={"html2"} className={UyeOlStyles.coUserStyle}>Normal Kullanıcı</label>
+                            <label className={UyeOlStyles.coUserStyle}>Normal Kullanıcı</label>
                             <input onClick={show2} type={"radio"} value={"HTML"} id={"html2"}
                                    name={"fav-language"}/>
                         </div>

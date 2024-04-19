@@ -8,6 +8,7 @@ import TopIcon from "../img/icon-256x256.png";
 import {getAllCity} from "../components/authLoading/AuthLoading";
 import Head from "next/head";
 import {useRouter} from "next/router";
+import NavBar from "../components/navBar"
 
 function HomePage() {
 
@@ -25,19 +26,7 @@ function HomePage() {
 
 
     return <div className={Grr.body}>
-        <div className={Grr.navpage}>
-            <Link href={"/"} className={Grr.navparag}>
-                halisaham.com
-            </Link>
-            <div className={Grr.navButton}>
-                <Link href="/girisYap" className={Grr.girisButton}>
-                    <div className={Grr.navB}>Giriş Yap</div>
-                </Link>
-                <Link href="/uyeOl" className={Grr.girisButton}>
-                    <div className={Grr.navB2}>Üye Ol</div>
-                </Link>
-            </div>
-        </div>
+        <NavBar></NavBar>
         <Link href="#second" scroll={false}>
             <div className={Grr.giris}>
                 <div className={Grr.ingiris}>

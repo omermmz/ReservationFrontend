@@ -13,6 +13,7 @@ import {
 } from "../components/authLoading/AuthLoading";
 import logGirisStyle from "../styles/logInGiris.module.css";
 import {UserButton} from "../components/userButton";
+import UserNavBar from "../components/userNavBar";
 
 export const getServerSideProps = async ({req, res}) => {
 
@@ -144,12 +145,7 @@ function HalisahaListele({cities, places, userName, userSurname, token}) {
     /*     TODO: içerik butonu seçiminde blur özelliği içe sinmedi
     *       incele infoboxundaki rezervasyon yap kısmına link eklenmedi*/
     return <div className={ReservationUserHalisahaListeleStyle.body}>
-        <div className={ReservationUserHalisahaListeleStyle.navpage}>
-            <Link href={"/companyUserHome"}>
-                <div className={ReservationUserHalisahaListeleStyle.navparag}>halisaham.com</div>
-            </Link>
-            <UserButton userSurname={userSurname} userName={userName} token={token}/>
-        </div>
+        <UserNavBar navigator={"/companyUserHome"} userSurname={userSurname} userName={userName} token={token}/>
 
         <div className={ReservationUserHalisahaListeleStyle.giris}>
             <div className={ReservationUserHalisahaListeleStyle.ingiris}>

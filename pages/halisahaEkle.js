@@ -6,6 +6,7 @@ import resim from "../img/FT_08_06_2017_16_46_58__197.jpg";
 import Data from '../data.json';
 import {addCity, addPlace, whoAmICoUserWithToken} from "../components/authLoading/AuthLoading";
 import {UserButton} from "../components/userButton";
+import UserNavBar from "../components/userNavBar";
 
 export const getServerSideProps = async ({req, res}) => {
 
@@ -65,18 +66,19 @@ function HalisahaEkle(props) {
               pathname: '/cuser'
           })*/
             alert("Its okay");
+            const resp2 = await addPlace(placeName, props.companyId, price, cityChange, provinceValue, districtValue, mahalleValue, resp.id, resp.provinceId, addressNo, telNo, kapora, startTime, endTime);
+            console.log(resp2);
+            if (resp2 === null || (resp2.status !== null && resp2.status !== 200) || resp2 === 'networkError') {
+                alert(resp2.status);
+                alert("Başarısız")
+            } else {
+                /*Router.push({
+                  pathname: '/cuser'
+              })*/
+                alert("Its okay");
+            }
         }
-        const resp2 = await addPlace(placeName, props.companyId, price, cityChange, provinceValue, districtValue, mahalleValue, resp.id, resp.provinceId, addressNo, telNo, kapora, startTime, endTime);
-        console.log(resp2);
-        if (resp2 === null || (resp2.status !== null && resp2.status !== 200) || resp2 === 'networkError') {
-            alert(resp2.status);
-            alert("Başarısız")
-        } else {
-            /*Router.push({
-              pathname: '/cuser'
-          })*/
-            alert("Its okay");
-        }
+
     }
 
 
@@ -89,12 +91,8 @@ function HalisahaEkle(props) {
         <option key={quarters.name}>{quarters.name}</option>)))))));
 
     return <div className={HalisahaEkleStyles.body}>
-        <div className={HalisahaEkleStyles.navpage}>
-            <Link href={"/companyUserHome"}>
-                <div className={HalisahaEkleStyles.navparag}>halisaham.com</div>
-            </Link>
-            <UserButton userSurname={props.userSurname} userName={props.userName} token={props.token}/>
-        </div>
+        <UserNavBar navigator={"/companyUserHome"} userSurname={props.userSurname} userName={props.userName}
+                    token={props.token}/>
 
         <div className={HalisahaEkleStyles.giris}>
             <div className={HalisahaEkleStyles.ingiris}>

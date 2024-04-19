@@ -5,6 +5,7 @@ import resim from "../img/FT_08_06_2017_16_46_58__197.jpg";
 import SweetALert from 'sweetalert'
 import {addReservation, getAllEmptyTime, whoAmIWithToken} from "../components/authLoading/AuthLoading";
 import ReservationUserRezervYapStyles from "../styles/reservationUserRezervYap.module.css"
+import UserNavBar from "../components/userNavBar";
 
 
 export const getServerSideProps = async (context) => {
@@ -31,8 +32,9 @@ function RezervazyonYap(props) {
     const [times, setTimes] = useState(["0-1"]);
 
     const addRes = async (e) => {
-        const resp = addReservation(date, (e.target.innerHTML.toString().substring(0, 5) + ":00"), props.placeId, props.userId);
-        if (resp == null || (resp.status != null && resp.status != 200) || resp == 'networkError') {
+        const resp = await addReservation(date, (e.target.innerHTML.toString().substring(0, 5) + ":00"), props.placeId, props.userId);
+        console.log(resp.status);
+        if (resp == null || (resp.status != null && resp.status != 200) || resp == 'networkError' || resp == 'undefined') {
             alert(resp.status);
             console.log(resp)
             alert("Başarısız");
@@ -49,16 +51,21 @@ function RezervazyonYap(props) {
             icon: "warning",
             buttons: true,
             dangerMode: true,
-        })
-            .then((willDelete) => {
-                if (willDelete && addRes(e)) {
-                    SweetALert("Rezervasyonunuz Alındı!", {
-                        icon: "success",
-                    });
-                } else {
-                    SweetALert("Rezervasyon Yapmadınız!");
-                }
-            });
+        }).then(async (willDelete) => {
+
+            const checkRes = await addRes(e);
+            if (willDelete && checkRes) {
+                SweetALert("Rezervasyonunuz Alındı!", {
+                    icon: "success",
+                });
+            } else {
+
+                SweetALert("Rezervasyon Yapamadınız!", {icon: "warning"});
+
+            }
+
+
+        });
     }
 
     const dateCheck = () => {
@@ -156,18 +163,8 @@ function RezervazyonYap(props) {
 
 
     return <div className={ReservationUserRezervYapStyles.body}>
-        <div className={ReservationUserRezervYapStyles.navpage}>
-            <Link href={"/reservationUserHome"}>
-                <div className={ReservationUserRezervYapStyles.navparag}>halisaham.com</div>
-            </Link>
-            <div className={ReservationUserRezervYapStyles.navButton}>
-                <div
-                    className={ReservationUserRezervYapStyles.navP}>Hoşgeldiniz <br/>{props.userName} {props.userSurname}
-                </div>
-                <div
-                    className={ReservationUserRezervYapStyles.navIcon}>{props.userName.toString().substring(0, 1)}</div>
-            </div>
-        </div>
+        <UserNavBar navigator={"/reservationUserHome"} userSurname={props.userSurname} userName={props.userName}
+                    token={props.token}/>
 
         <div className={ReservationUserRezervYapStyles.giris}>
             <div className={ReservationUserRezervYapStyles.ingiris}>

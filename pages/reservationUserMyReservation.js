@@ -6,6 +6,7 @@ import SweetALert from "sweetalert";
 import {deleteReservation, getMyReservations, whoAmIWithToken} from "../components/authLoading/AuthLoading";
 import {useRouter} from "next/router";
 import ReservationUserMyReservation from "../styles/reservationUserMyReservation.module.css";
+import UserNavBar from "../components/userNavBar";
 
 
 export const getServerSideProps = async (context) => {
@@ -145,15 +146,7 @@ function MyReservation({reservations, token, userName, userSurname}) {
 
     /*     TODO: içerik butonu seçiminde blur özelliği içe sinmedi*/
     return <div className={ReservationUserMyReservation.body}>
-        <div className={ReservationUserMyReservation.navpage}>
-            <Link href={"/reservationUserHome"}>
-                <div className={ReservationUserMyReservation.navparag}>halisaham.com</div>
-            </Link>
-            <div className={ReservationUserMyReservation.navButton}>
-                <div className={ReservationUserMyReservation.navP}>Hoşgeldiniz <br/>{userName} {userSurname}</div>
-                <div className={ReservationUserMyReservation.navIcon}>{userName.toString().substring(0, 1)}</div>
-            </div>
-        </div>
+        <UserNavBar navigator={"/reservationUserHome"} userSurname={userSurname} userName={userName} token={token}/>
 
         <div className={ReservationUserMyReservation.giris}>
             <div className={ReservationUserMyReservation.ingiris}>

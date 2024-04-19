@@ -10,8 +10,9 @@ import {
     whoAmIWithToken
 } from "../components/authLoading/AuthLoading";
 import {useRouter} from "next/router";
-import CompanyUserMyPlaceStyle from "../styles/companyUSerMyPlaces.module.css";
+import CompanyUserMyPlaceStyle from "../styles/companyUserMyPlaces.module.css";
 import {UserButton} from "../components/userButton";
+import UserNavBar from "../components/userNavBar";
 
 
 export const getServerSideProps = async (context) => {
@@ -155,12 +156,7 @@ function MyPlaces({places, token, userName, userSurname}) {
 
     /*     TODO: içerik butonu seçiminde blur özelliği içe sinmedi*/
     return <div className={CompanyUserMyPlaceStyle.body}>
-        <div className={CompanyUserMyPlaceStyle.navpage}>
-            <Link href={"/companyUserHome"}>
-                <div className={CompanyUserMyPlaceStyle.navparag}>halisaham.com</div>
-            </Link>
-            <UserButton userSurname={userSurname} userName={userName} token={token}/>
-        </div>
+        <UserNavBar navigator={"/companyUserHome"} userSurname={userSurname} userName={userName} token={token}/>
 
         <div className={CompanyUserMyPlaceStyle.giris}>
             <div className={CompanyUserMyPlaceStyle.ingiris}>

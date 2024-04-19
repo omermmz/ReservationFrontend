@@ -11,6 +11,7 @@ import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import {SelectNavBar} from "../components/selectNavBar";
 import {UserButton} from "../components/userButton";
+import UserNavBar from "../components/userNavBar";
 
 export const getServerSideProps = async ({req, res}) => {
 
@@ -42,12 +43,8 @@ function ReservationUserHome(props) {
     }
 
     return <div className={logGirisStyle.body}>
-        <div className={logGirisStyle.navpage}>
-            <Link href={"/reservationUserHome"}>
-                <div className={logGirisStyle.navparag}>halisaham.com</div>
-            </Link>
-            <UserButton userSurname={props.userSurname} userName={props.userName} token={props.token}/>
-        </div>
+        <UserNavBar navigator={"/reservationUserHome"} userSurname={props.userSurname} userName={props.userName}
+                    token={props.token}/>
 
         <Link href="#second" scroll={false}><div className={logGirisStyle.giris}>
             <div className={logGirisStyle.ingiris} >
@@ -74,7 +71,7 @@ function ReservationUserHome(props) {
                 </Link>
             </div>
             <div className={logGirisStyle.secondButton}>
-                <p className={logGirisStyle.secondPara}>Favoriler {props.token}</p>
+                <p className={logGirisStyle.secondPara}>Favoriler</p>
             </div>
         </div>
         <div className={logGirisStyle.navEnd} id="second">

@@ -1,0 +1,34 @@
+
+.navpage {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: burlywood;
+    width: 100%;
+    height: 80px; /* Tvde 80px*/
+    overflow: auto;
+}
+
+.navparag {
+    font-family: "Arial Rounded MT Bold";
+    color: crimson;
+    font-weight: bolder;
+    text-align: center;
+    position: relative;
+    left: 0;
+    margin-left: 3%;
+    padding: 10px;
+    font-size: 3.5vw;
+}
+
+.navparag:hover {
+    cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+    .navpage {
+        height: 8vw;
+        overflow: auto;
+    }
+}

@@ -12,6 +12,7 @@ import {
     updateReservation,
     whoAmIWithToken
 } from "../components/authLoading/AuthLoading";
+import UserNavBar from "../components/userNavBar";
 
 
 export const getServerSideProps = async (context) => {
@@ -248,18 +249,8 @@ function RezervazyonYap(props) {
 
 
     return <div className={ReservationUserRezervYapStyles.body}>
-        <div className={ReservationUserRezervYapStyles.navpage}>
-            <Link href={"/reservationUserHome"}>
-                <div className={ReservationUserRezervYapStyles.navparag}>halisaham.com</div>
-            </Link>
-            <div className={ReservationUserRezervYapStyles.navButton}>
-                <div
-                    className={ReservationUserRezervYapStyles.navP}>Hoşgeldiniz <br/>{props.userName} {props.userSurname}
-                </div>
-                <div
-                    className={ReservationUserRezervYapStyles.navIcon}>{props.userName.toString().substring(0, 1)}</div>
-            </div>
-        </div>
+        <UserNavBar navigator={"/reservationUserHome"} userSurname={props.userSurname} userName={props.userName}
+                    token={props.token}/>
 
         <div className={ReservationUserRezervYapStyles.giris}>
             <div className={ReservationUserRezervYapStyles.ingiris}>

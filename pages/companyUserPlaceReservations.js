@@ -12,6 +12,7 @@ import {
 import {useRouter} from "next/router";
 import CompanyUserPlaceReservationsStyle from "../styles/companyUserPlaceReservations.module.css";
 import {UserButton} from "../components/userButton";
+import UserNavBar from "../components/userNavBar";
 
 
 export const getServerSideProps = async (context) => {
@@ -53,12 +54,7 @@ function PlaceReservations({reservations, token, userName, userSurname}) {
 
     /*     TODO: içerik butonu seçiminde blur özelliği içe sinmedi*/
     return <div className={CompanyUserPlaceReservationsStyle.body}>
-        <div className={CompanyUserPlaceReservationsStyle.navpage}>
-            <Link href={"/companyUserHome"}>
-                <div className={CompanyUserPlaceReservationsStyle.navparag}>halisaham.com</div>
-            </Link>
-            <UserButton userSurname={userSurname} userName={userName} token={token}/>
-        </div>
+        <UserNavBar navigator={"/companyUserHome"} userSurname={userSurname} userName={userName} token={token}/>
 
         <div className={CompanyUserPlaceReservationsStyle.giris}>
             <div className={CompanyUserPlaceReservationsStyle.ingiris}>
