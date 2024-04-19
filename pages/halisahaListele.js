@@ -137,7 +137,7 @@ function HalisahaListele({cities, places}) {
     return <div className={HalisahaListeleStyles.body}>
         <div className={HalisahaListeleStyles.navpage}>
             <Link href={"/"}>
-                <div className={HalisahaListeleStyles.navparag}>halisaham.com</div>
+                <div className={HalisahaListeleStyles.navparag}>halisaham.org</div>
             </Link>
             <div className={HalisahaListeleStyles.navButton}>
             </div>

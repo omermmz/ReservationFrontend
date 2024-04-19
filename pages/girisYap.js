@@ -58,7 +58,7 @@ function GirisYap() {
     return <div className={GirisYapCss.body}>
         <div className={GirisYapCss.navpage}>
             <Link href={"/"}>
-                <div className={GirisYapCss.navparag}>halisaham.com</div>
+                <div className={GirisYapCss.navparag}>halisaham.org</div>
             </Link>
         </div>
 

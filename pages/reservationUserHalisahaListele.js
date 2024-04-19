@@ -126,27 +126,29 @@ function HalisahaListele({cities, places, userName, userSurname, token}) {
             <td key={2}>{place.phoneNumber}</td>
             <td key={3}>{place.price}</td>
             <td key={4}>{place.kapora}</td>
-            <td key={5} className={ReservationUserHalisahaListeleStyle.rezervButton} onClick={() => {
-                setShowInfo1(true);
-                setName(place.name);
-                setAddress(place.address);
-                setPrice(place.price);
-                setKapora(place.kapora);
-                setPhone(place.phoneNumber);
-                scrollToTop()
-            }}>
-                İncele
-            </td>
-            <Link key={7} href={{
-                pathname: "/reservationUserRezervYap",
-                query: {
-                    placeName: place.name,
-                    placeId: place.id
-                }
-            }}
-                  className={ReservationUserHalisahaListeleStyle.rezervLinkStyle}>
-                <td key={6} className={ReservationUserHalisahaListeleStyle.rezervButton2}>Rezervasyon Yap</td>
-            </Link>
+            <div className={ReservationUserHalisahaListeleStyle.rezervButtonDiv}>
+                <td key={5} className={ReservationUserHalisahaListeleStyle.rezervButton} onClick={() => {
+                    setShowInfo1(true);
+                    setName(place.name);
+                    setAddress(place.address);
+                    setPrice(place.price);
+                    setKapora(place.kapora);
+                    setPhone(place.phoneNumber);
+                    scrollToTop()
+                }}>
+                    İncele
+                </td>
+                <Link key={7} href={{
+                    pathname: "/reservationUserRezervYap",
+                    query: {
+                        placeName: place.name,
+                        placeId: place.id
+                    }
+                }}
+                      className={ReservationUserHalisahaListeleStyle.rezervLinkStyle}>
+                    <td key={6} className={ReservationUserHalisahaListeleStyle.rezervButton2}>Rezervasyon Yap</td>
+                </Link>
+            </div>
         </tr>
     );
 

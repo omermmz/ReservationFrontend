@@ -68,7 +68,7 @@ function UpdateMail(props) {
     return <div className={UserSettingsStyles.body}>
         <div className={UserSettingsStyles.navpage}>
             <Link href={(props.userType === "Reservation User") ? "/reservationUserHome" : "/companyUserHome"}>
-                <div className={UserSettingsStyles.navparag}>halisaham.com</div>
+                <div className={UserSettingsStyles.navparag}>halisaham.org</div>
             </Link>
             <UserButton userSurname={props.userSurname} userName={props.userName}/>
         </div>
