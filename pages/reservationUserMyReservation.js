@@ -7,6 +7,7 @@ import {deleteReservation, getMyReservations, whoAmIWithToken} from "../componen
 import {useRouter} from "next/router";
 import ReservationUserMyReservation from "../styles/reservationUserMyReservation.module.css";
 import UserNavBar from "../components/userNavBar";
+import MyReservationStyles from "../styles/myReservation.module.css";
 
 
 export const getServerSideProps = async (context) => {
@@ -152,45 +153,52 @@ function MyReservation({reservations, token, userName, userSurname}) {
             <div className={ReservationUserMyReservation.ingiris}>
                 <Image src={resim} className={ReservationUserMyReservation.imageStyle}/>
                 <div className={ReservationUserMyReservation.blurWindowStyle} id={"containerDiv"}>
-                    <div className={ReservationUserMyReservation.optionsDiv}>
-                    </div>
+
                     <div className={ReservationUserMyReservation.tableDiv}>
 
                         <div className={ReservationUserMyReservation.tableStyle}>
 
                             {reservations.map(reservation =>
                                 <div className={ReservationUserMyReservation.reservDiv}>
-                                    <h7 className={ReservationUserMyReservation.paragStyle}>Halısaha Adı:</h7>
-                                    <label
-                                        className={ReservationUserMyReservation.infoStyle}>{reservation.placeName}</label>
-                                    <h7 className={ReservationUserMyReservation.paragStyle}>Adres:</h7>
-                                    <label
-                                        className={ReservationUserMyReservation.infoStyle}>{reservation.placeAddress}</label>
-                                    <h7 className={ReservationUserMyReservation.paragStyle}>Tarih:</h7>
-                                    <label
-                                        className={ReservationUserMyReservation.infoStyle}>{reservation.date.substring(8, 10) + "." + reservation.date.substring(5, 7) + "." + reservation.date.substring(0, 4)}</label>
-                                    <h7 className={ReservationUserMyReservation.paragStyle}>Saat:</h7>
-                                    <label className={ReservationUserMyReservation.infoStyle}>{reservation.time}</label>
-                                    <button className={ReservationUserMyReservation.rezervButton} onClick={() => {
-                                        rezervSil(reservation.date.substring(8, 10) + "." + reservation.date.substring(5, 7) + "." + reservation.date.substring(0, 4), reservation.time, reservation.id)
-                                    }}>İptal Et
-                                    </button>
-                                    <Link href={{
-                                        pathname: "/reservationUserRezervGuncelle",
-                                        query: {
-                                            reservationId: reservation.id,
-                                            reservationDate: reservation.date,
-                                            reservationTime: reservation.time,
-                                            placeName: reservation.placeName, //pass it to the page props
-                                            placeId: reservation.placeId,
-                                            reservationUserId: reservation.userId
-                                        }
-                                    }}
-                                          className={ReservationUserMyReservation.rezervLinkStyle}>
-                                        <button className={ReservationUserMyReservation.rezervButton2}>Rezervasyon
-                                            Güncelle
+                                    <div className={MyReservationStyles.reservsDiv}>
+                                        <h7 className={MyReservationStyles.paragStyle}>Halısaha Adı:</h7>
+                                        <label className={MyReservationStyles.infoStyle}>{reservation.placeName}</label>
+                                    </div>
+                                    <div className={MyReservationStyles.reservsDiv}>
+                                        <h7 className={MyReservationStyles.paragStyle}>Adres:</h7>
+                                        <label
+                                            className={MyReservationStyles.infoStyle}>{reservation.placeAddress}</label>
+                                    </div>
+                                    <div className={MyReservationStyles.reservsDiv}>
+                                        <h7 className={MyReservationStyles.paragStyle}>Tarih:</h7>
+                                        <label
+                                            className={MyReservationStyles.infoStyle}>{reservation.date.substring(8, 10) + "." + reservation.date.substring(5, 7) + "." + reservation.date.substring(0, 4)}</label>
+                                    </div>
+                                    <div className={MyReservationStyles.reservsDiv}>
+                                        <h7 className={MyReservationStyles.paragStyle}>Saat:</h7>
+                                        <label className={MyReservationStyles.infoStyle}>{reservation.time}</label>
+                                    </div>
+                                    <div className={MyReservationStyles.reservsDiv}>
+                                        <button className={MyReservationStyles.rezervButton} onClick={() => {
+                                            rezervSil(reservation.date.substring(8, 10) + "." + reservation.date.substring(5, 7) + "." + reservation.date.substring(0, 4), reservation.time, reservation.id)
+                                        }}>İptal Et
                                         </button>
-                                    </Link>
+                                        <Link href={{
+                                            pathname: "/reservationUserRezervGuncelle",
+                                            query: {
+                                                reservationId: reservation.id,
+                                                reservationDate: reservation.date,
+                                                reservationTime: reservation.time,
+                                                placeName: reservation.placeName, //pass it to the page props
+                                                placeId: reservation.placeId,
+                                                reservationUserId: reservation.userId
+                                            }
+                                        }}
+                                              className={MyReservationStyles.rezervLinkStyle}>
+                                            <button className={MyReservationStyles.rezervButton2}>Rezervasyon Güncelle
+                                            </button>
+                                        </Link>
+                                    </div>
 
 
                                 </div>

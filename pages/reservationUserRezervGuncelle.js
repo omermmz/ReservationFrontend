@@ -49,7 +49,7 @@ export const getServerSideProps = async (context) => {
 
 //TODO: sayfa yüklendiğinde aynı tarihte herhangi bir oynama yapılmadığında güncelleme yapılmıyor.... !!!!
 
-function RezervazyonYap(props) {
+function ReservationUserRezervGuncelle(props) {
 
     const array = [...Array(6)]
     const [date, setDate] = useState(props.reservationDate);
@@ -287,4 +287,4 @@ function RezervazyonYap(props) {
 }
 
 
-export default RezervazyonYap
+export default ReservationUserRezervGuncelle

@@ -292,7 +292,7 @@ function HalisahaListele({cities, places, userName, userSurname, token}) {
                         </div>
                         <InfoBox show={showInfo1} onClickOutside={() => {
                             setShowInfo1(false)
-                        }} message={"selamlar"} name={name} address={address} price={price} kapora={kapora}
+                        }} message={"resim"} name={name} address={address} price={price} kapora={kapora}
                                  phoneNumbers={phone}>
                         </InfoBox>
 
